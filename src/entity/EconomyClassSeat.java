@@ -1,17 +1,17 @@
 package entity;
 
-public class FirstClassSeat extends Seat{
+public class EconomyClassSeat extends Seat{
 	
 	private double seatPrice;
 	
-	public FirstClassSeat(int seatNumber, double seatPrice) {
+	public EconomyClassSeat(int seatNumber, double seatPrice) {
 		super(seatNumber);
 		this.seatPrice=seatPrice;
 	}
 
-	public FirstClassSeat(int seatNumber) {
+	public EconomyClassSeat(int seatNumber) {
 		super(seatNumber);
-		this.seatPrice=20000;
+		this.seatPrice=5000;
 	}
 
 	public double getSeatPrice() {
@@ -20,7 +20,7 @@ public class FirstClassSeat extends Seat{
 	
 	public void setSeatPrice(double seatPrice) {
 		this.seatPrice = seatPrice;
-	}	
+	}
 		
 }
 	
