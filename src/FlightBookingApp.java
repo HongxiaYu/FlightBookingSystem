@@ -24,30 +24,25 @@ public class FlightBookingApp {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 586, 401);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		
-		JButton btnBooking = new JButton("Book");
-		btnBooking.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		JButton btnBooking = new JButton("Book tickets");
+//		btnBooking.addActionListener(e -> new BookTickesFrame()); TODO Change to new class
 		panel.add(btnBooking);
 		
-		JButton btnQuery = new JButton("Query");
+		JButton btnQuery = new JButton("Querry");
+//		btnQuery.addActionListener(e -> new QuerryFrame()); TODO Change to new class
 		panel.add(btnQuery);
 		
 		JButton btnAdminister = new JButton("Administer");
+//		btnAdminister.addActionListener(e -> new AdminiserFrame()); TODO Change to new class
 		panel.add(btnAdminister);
 	}
 	
-	private void bookSeat() {
-		int option = JOptionPane.showInternalConfirmDialog(frame,
-				"please choose one", "information",
-				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-	}
+	
 
 }
