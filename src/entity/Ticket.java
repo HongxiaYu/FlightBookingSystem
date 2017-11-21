@@ -38,4 +38,8 @@ public class Ticket {
 		return seat.getSeatPrice() + food.getFoodPrice();
 	}
 	
+	public String toString() {
+		return customer +" seatNumber: "+ seat.getSeatNumber() +" Meal: "+ food.getFoodName() +" Total price: " + getTicketPrice();
+	}
+	
 }

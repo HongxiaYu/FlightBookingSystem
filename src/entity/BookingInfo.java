@@ -5,13 +5,15 @@ import java.util.List;
 
 public class BookingInfo {
 	private int bookingID;
+	private Customer customer;
 	private Date date;
 	private int numberOfBookings;
 	private ArrayList<Ticket>tickets;
 	
-	public BookingInfo(int bookingID, Date date, int numberOfBookings, ArrayList<Ticket> tickets) {
+	public BookingInfo(int bookingID, Customer customer, Date date, int numberOfBookings, ArrayList<Ticket> tickets) {
 		super();
 		this.bookingID = bookingID;
+		this.customer = customer;
 		this.date = date;
 		this.numberOfBookings = numberOfBookings;
 		this.tickets = tickets;
@@ -19,6 +21,10 @@ public class BookingInfo {
 
 	public int getBookingID() {
 		return bookingID;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
 	}
 
 	public Date getDate() {
@@ -40,6 +46,7 @@ public class BookingInfo {
 		}
 		return price;
 	}
+	
 
 	
 }

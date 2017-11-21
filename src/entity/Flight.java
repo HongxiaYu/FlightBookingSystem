@@ -46,7 +46,7 @@ public  class Flight {
 	}
 
 
-	public EconomyClassSeat[] getEconomyClassSetas() {
+	public EconomyClassSeat[] getEconomyClassSeats() {
 		return economyClassSetas;
 	}
 

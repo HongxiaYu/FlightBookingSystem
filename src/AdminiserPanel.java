@@ -22,12 +22,14 @@ public class AdminiserPanel extends JPanel {
 		JPanel panelTop = new JPanel();
 		add(panelTop);
 		
+		JPanel panelMiddle = new JPanel();
+		add(panelMiddle);
+		
 		JLabel lblTotalIncome = new JLabel("Total income " + totalProfit);
-		panelTop.add(lblTotalIncome);
+		panelMiddle.add(lblTotalIncome);
 		
 		JPanel panelBottom = new JPanel();
 		add(panelBottom);
-		
 		
 		
 	}

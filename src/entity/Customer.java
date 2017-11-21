@@ -5,15 +5,15 @@ public class Customer{
 	
 	private String firstName;
 	private String lastName;
-	private int age;
+	private int passportNumber;
 	private String classType;
 	private int customerId;
 	int  numberOfBookings;
 	
-	public Customer(String firstName,String lastName,int age,String classType,int customerId) {
+	public Customer(String firstName,String lastName,int passportNumber,String classType,int customerId) {
 		this.firstName=firstName;
 		this.lastName= lastName;
-		this.age=age;
+		this.passportNumber=passportNumber;
 		this.classType=classType;
 		this.customerId=customerId;
 		numberOfBookings++;		
@@ -27,8 +27,8 @@ public class Customer{
 		return lastName;
 	}
 
-	public int getAge() {
-		return age;
+	public int getPassportNumber() {
+		return passportNumber;
 	}
 
 	public String getClassType() {
@@ -41,6 +41,14 @@ public class Customer{
 
 	public int getNumberOfBookings() {
 		return numberOfBookings;
+	}
+	
+	public int getId() {
+		return customerId;
+	}
+	
+	public String toString() {
+		return customerId +" "+ firstName +" "+ lastName;
 	}
 
 	
