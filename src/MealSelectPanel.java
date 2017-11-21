@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
 public class MealSelectPanel extends JPanel {
 	private int iType = 1;
 	SelectedMealList selectedMealList;
+	JPanel mealPanel = new JPanel();
 
 	public MealSelectPanel(int iType, int customerID, int seatID) {
 		this.iType = iType;
@@ -39,51 +40,25 @@ public class MealSelectPanel extends JPanel {
 	}
 
 	private void initMainPanel() {
-		JPanel panel = new JPanel();
 		this.setLayout(new BorderLayout());
 		JLabel lblPleaseChooseYour = new JLabel("Please choose your meal");
 		this.add(lblPleaseChooseYour, BorderLayout.NORTH);
 		lblPleaseChooseYour.setHorizontalAlignment(SwingConstants.CENTER);
 
-		this.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(0, 1));
-		panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		initMenuPanel(panel);
+		this.add(mealPanel, BorderLayout.CENTER);
+		mealPanel.setLayout(new GridLayout(0, 1));
+		mealPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+		initMenuPanel(mealPanel);
 
 		JPanel panel_1 = new JPanel();
 		add(panel_1, BorderLayout.SOUTH);
 
 		JButton btnNewButton = new JButton("RESET");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Component[] components = panel.getComponents();
-				for (Component c : components) {
-					if (c instanceof MealCheckBox) {
-						MealCheckBox cb = (MealCheckBox) c;
-						cb.setSelected(false);
-					}
-				}
-
-			}
-		});
+		btnNewButton.addActionListener(e -> new ResetMealAction());
 		panel_1.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("  OK  ");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				selectedMealList.clear();
-				Component[] components = panel.getComponents();
-				for (Component c : components) {
-					if (c instanceof MealCheckBox) {
-						MealCheckBox cb = (MealCheckBox) c;
-						if (cb.isSelected()) {
-							addSelectFood(cb.getFood());
-						}
-					}
-				}
-				System.out.println("Total Price: " + selectedMealList.getMealTotalPrice());
-			}
-		});
+		btnNewButton_1.addActionListener(e -> new ConfirmMealAction());
 		panel_1.add(btnNewButton_1);
 
 	}
@@ -120,4 +95,34 @@ public class MealSelectPanel extends JPanel {
 		jFrame.setVisible(true);
 
 	}
+
+	class ResetMealAction implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			Component[] components = mealPanel.getComponents();
+			for (Component c : components) {
+				if (c instanceof MealCheckBox) {
+					MealCheckBox cb = (MealCheckBox) c;
+					cb.setSelected(false);
+				}
+			}
+
+		}
+	}
+
+	class ConfirmMealAction implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			selectedMealList.clear();
+			Component[] components = mealPanel.getComponents();
+			for (Component c : components) {
+				if (c instanceof MealCheckBox) {
+					MealCheckBox cb = (MealCheckBox) c;
+					if (cb.isSelected()) {
+						addSelectFood(cb.getFood());
+					}
+				}
+			}
+			System.out.println("Total Price: " + selectedMealList.getMealTotalPrice());
+		}
+	}
+
 }
