@@ -23,7 +23,7 @@ public class DataLager {
 		
 	}
 	
-	public List<Food> getFirstClassMenu(){
+	public static List<Food> getFirstClassMenu(){
 		List<Food> menu = new ArrayList<Food>();
 		menu.add(new Food(1,"Beef med rice", 56));
 		menu.add(new Food(2,"Chicken med rice", 86));
@@ -42,7 +42,7 @@ public class DataLager {
 		return menu;
 	}
 	
-	public List<Food> getEconomyClassMenu(){
+	public static List<Food> getEconomyClassMenu(){
 		List<Food> menu = new ArrayList<Food>();
 		menu.add(new Food(1,"Beef med rice", 56));
 		menu.add(new Food(2,"Chicken med rice", 86));

@@ -2,8 +2,8 @@
 public class BookingMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		FlightBookingApp flightBookingApp  = new FlightBookingApp();
+		
 	}
 
 }
