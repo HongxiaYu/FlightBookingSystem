@@ -1,6 +1,6 @@
 package entity;
 
-public class Customer extends Seat {
+public class Customer{
 
 	
 	private String firstName;
@@ -11,14 +11,12 @@ public class Customer extends Seat {
 	int  numberOfBookings;
 	
 	public Customer(String firstName,String lastName,int age,String classType,int customerId) {
-		super(flightId,flightName,seatNumber,seatType);
 		this.firstName=firstName;
 		this.lastName= lastName;
 		this.age=age;
 		this.classType=classType;
 		this.customerId=customerId;
-		numberOfBookings++;
-		
+		numberOfBookings++;		
 	}
 
 	public String getFirstName() {

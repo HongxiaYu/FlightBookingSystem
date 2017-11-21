@@ -1,19 +1,25 @@
 package entity;
 
-public class Seat extends Flight{
+import util.GenericIDNext;
 
-	
-	protected static int seatNumber;
+public abstract class Seat {
+	private int seatNumber;
 	private double seatPrice;
-	protected static String seatType;
-	private boolean seatStatus;
+	private SeatStatus seatStatus;
+	private int id;
 	
-	public Seat(int seatNumber,double seatPrice, String seatType,boolean seatStatus) {
-		super(flightId,flightName);
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Seat(int seatNumber) {
 		this.seatNumber=seatNumber;
-		this.seatPrice=seatPrice;
-		this.seatType=seatType;
-		this.seatStatus=seatStatus;
+		this.seatStatus=SeatStatus.EMPTY;	
+		this.id = GenericIDNext.getSeatIDNext();
 	}
 
 	public int getSeatNumber() {
@@ -24,14 +30,21 @@ public class Seat extends Flight{
 		return seatPrice;
 	}
 
-	public String getSeatType() {
-		return seatType;
+	public SeatStatus getSeatStatus() {
+		return seatStatus;
 	}
 
-	public boolean isseatStatus() {
-		return seatStatus;
+	public void setSeatStatus(SeatStatus seatStatus) {
+		this.seatStatus = seatStatus;
+	}
+
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
+	}
+
+	public void setSeatPrice(double seatPrice) {
+		this.seatPrice = seatPrice;
 	}
 		
 }
 	
-
