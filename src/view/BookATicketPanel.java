@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 
 import entity.Customer;
 import entity.FirstClassSeat;
+import entity.Flight;
 import entity.Food;
 import entity.Seat;
 import entity.Ticket;
@@ -22,13 +23,13 @@ public class BookATicketPanel extends JPanel {
 	CustomerInfoInputPanel customerInfoPanel;
 	private String panelName;
 
-	public BookATicketPanel(int itype) {
-		initMainPanel(itype);
+	public BookATicketPanel(int itype , Flight flight) {
+		initMainPanel(itype, flight);
 	}
 
-	public void initMainPanel(int itype) {
+	public void initMainPanel(int itype, Flight flight) {
 		this.setLayout(null);
-		seatSelectPanel = new SeatSelectPanel(itype);
+		seatSelectPanel = new SeatSelectPanel(itype, flight);
 		seatSelectPanel.setSize(313, 180);
 		seatSelectPanel.setLocation(0, 0);
 		seatSelectPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
@@ -76,7 +77,7 @@ public class BookATicketPanel extends JPanel {
 
 	public static void main(String[] args) {
 		JFrame jFrame = new JFrame();
-		BookATicketPanel msf = new BookATicketPanel(1);
+		BookATicketPanel msf = new BookATicketPanel(1, null);
 		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 		jFrame.setSize(400, 500);
 		jFrame.setVisible(true);

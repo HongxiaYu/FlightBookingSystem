@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import entity.Flight;
 import entity.Ticket;
 import util.CommenMethod;
 
@@ -30,20 +31,22 @@ public class BookTicketsPanel extends JPanel {
 
 	private JTabbedPane tabbedPanel = new JTabbedPane();
 	private List<BookATicketPanel> bookATicketPanels;
+	private Flight flight;
 
 	public BookTicketsPanel() {
-		initMainPanel(1); // need chang
+		initMainPanel(1,null); // need chang
 	}
 
-	public BookTicketsPanel(int iSeatTpe) {
-		initMainPanel(iSeatTpe);
+	public BookTicketsPanel(int iSeatTpe, Flight flight) {
+		initMainPanel(iSeatTpe, flight);
 	}
 
-	public void initMainPanel(int iSeatTpe) {
+	public void initMainPanel(int iSeatTpe, Flight flight) {
+		this.flight = flight;
 		this.setLayout(new BorderLayout());
 		String ticket1 = "Ticket 1";
 		bookATicketPanels = new ArrayList<BookATicketPanel>();
-		BookATicketPanel bookATicketPanel = new BookATicketPanel(iSeatTpe);
+		BookATicketPanel bookATicketPanel = new BookATicketPanel(iSeatTpe, flight);
 		bookATicketPanel.setPanelName(ticket1);
 		tabbedPanel.addTab(ticket1, bookATicketPanel);
 		addCloseActionToTab(ticket1, bookATicketPanel);
@@ -56,7 +59,7 @@ public class BookTicketsPanel extends JPanel {
 		panel.add(btnAddmorecustomer);
 		btnAddmorecustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BookATicketPanel bookATicketPanelTemp = new BookATicketPanel(iSeatTpe);
+				BookATicketPanel bookATicketPanelTemp = new BookATicketPanel(iSeatTpe, flight);
 				String title = "Ticket " + (tabbedPanel.getTabCount() + 1);
 				tabbedPanel.addTab(title, bookATicketPanelTemp);
 				addCloseActionToTab(title, bookATicketPanelTemp);
@@ -105,7 +108,7 @@ public class BookTicketsPanel extends JPanel {
 		tabbedPanel.removeAll();
 		bookATicketPanels = new ArrayList<BookATicketPanel>();		
 		for(Ticket t : tickets) {
-			BookATicketPanel bookATicketPanelTemp = new BookATicketPanel(t.getSeatType());
+			BookATicketPanel bookATicketPanelTemp = new BookATicketPanel(t.getSeatType(), flight);
 			bookATicketPanelTemp.initVale(t);
 			String title = "Ticket " + (tabbedPanel.getTabCount() + 1);
 			tabbedPanel.addTab(title, bookATicketPanelTemp);
@@ -159,7 +162,7 @@ public class BookTicketsPanel extends JPanel {
 
 	public static void main(String[] args) {
 		JFrame jFrame = new JFrame();
-		BookTicketsPanel msf = new BookTicketsPanel(1);
+		BookTicketsPanel msf = new BookTicketsPanel(1,null);
 		msf.getTickets();
 		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 		jFrame.setSize(600, 500);

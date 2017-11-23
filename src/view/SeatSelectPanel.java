@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 
+import entity.Airplane;
+import entity.Flight;
 import entity.Seat;
 import entity.SeatRadioButton;
 import entity.SeatStatus;
@@ -26,11 +28,13 @@ import java.util.List;
 public class SeatSelectPanel extends JPanel {
 	
 	private int iType;
+	private Flight fight;
 	private List<SeatRadioButton>  seatRadioButtons;
 
 
-	public SeatSelectPanel(int itype) {
+	public SeatSelectPanel(int itype, Flight fight) {
 		this.iType = itype;
+		this.fight = fight;
 		initMainPanel();
 	}
 
@@ -57,7 +61,7 @@ public class SeatSelectPanel extends JPanel {
 		seatPanel.removeAll();
 		ButtonGroup buttonGroup = new ButtonGroup();
 		seatRadioButtons = new ArrayList<SeatRadioButton>();
-		List<Seat> seats = FlightBookingApp.getDataLager().getSeats(iType);
+		List<Seat> seats = FlightBookingApp.getDataLager().getSeats(iType, fight);
 		seatPanel.setLayout(new BoxLayout(seatPanel, BoxLayout.Y_AXIS));
 		seatPanel.setBorder(new TitledBorder("Choose A Seat"));
 		for (Seat seat : seats) {
@@ -91,7 +95,8 @@ public class SeatSelectPanel extends JPanel {
 
 	public static void main(String[] args) {
 		JFrame jFrame = new JFrame();
-		SeatSelectPanel msf = new SeatSelectPanel(1);
+		Airplane a1 = new Airplane("First", 5, 5);
+		SeatSelectPanel msf = new SeatSelectPanel(1, new Flight("To Oslo", a1, "14:00"));
 		msf.getSelectedSeat();
 		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 		jFrame.setSize(300, 400);

@@ -63,7 +63,7 @@ public class FlightBookingApp {
 		btnBooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChooseTicketClassFrame cf = new ChooseTicketClassFrame();
-				cf.setSize(300, 180);
+				cf.setSize(320, 260);
 				cf.setLocation(300, 400);
 				cf.setVisible(true);
 			}

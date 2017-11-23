@@ -31,8 +31,7 @@ public class DataLager {
 	}
 
 	// load data from XML
-	private void initData() {
-		
+	private void initData() {		
 	
 		Airplane a1 = new Airplane("First", 5, 5);
 		
