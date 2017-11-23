@@ -30,7 +30,9 @@ public class FlightBookingApp {
 	 */
 	public FlightBookingApp() {
 		initialize();
+		frame.setTitle("AHA Flight Booking System");
 		frame.setVisible(true);
+		flightBookingApp = this;
 	}
 
 	public static FlightBookingApp getInstanceFlightApp() {

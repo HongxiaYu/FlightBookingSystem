@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -44,7 +45,6 @@ public class BookTicketsPanel extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 354, 450, 33);
-		bookATicketPanel.add(panel);
 
 		JButton btnAddmorecustomer = new JButton("Add a New Ticket");
 		panel.add(btnAddmorecustomer);
@@ -56,6 +56,7 @@ public class BookTicketsPanel extends JPanel {
 				addCloseActionToTab(title, bookATicketPanelTemp);
 			}
 		});
+
 		btnAddmorecustomer.setSize(40, 10);
 
 		JButton btnNext = new JButton("              Next              ");
@@ -68,15 +69,18 @@ public class BookTicketsPanel extends JPanel {
 				confirmFrame.setVisible(true);
 			}
 		});
+
 		panel.add(btnNext);
 
 		this.add(tabbedPanel, BorderLayout.CENTER);
-
+		this.add(panel, BorderLayout.SOUTH);
 	}
 
 	// init ticket to do
 	public List<Ticket> getTickets() {
+		List<Ticket> tickets = new ArrayList<Ticket>();
 		tabbedPanel.getTabCount();
+
 		return null;
 	}
 

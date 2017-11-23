@@ -63,7 +63,6 @@ public class MealPanel extends JPanel {
 
 		JPanel panel_3 = new JPanel();
 		add(panel_3, BorderLayout.EAST);
-
 	}
 
 	private void initMainPanel() {
