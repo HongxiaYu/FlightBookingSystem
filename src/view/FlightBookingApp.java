@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import data.DataLager;
+import util.CommenMethod;
 
 import java.awt.BorderLayout;
 
@@ -50,7 +51,7 @@ public class FlightBookingApp {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 586, 401);
+		frame.setBounds(CommenMethod.FRAME_LOCATION_X, CommenMethod.FRAME_LOCATION_Y, 586, 401);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
@@ -64,8 +65,9 @@ public class FlightBookingApp {
 			public void actionPerformed(ActionEvent e) {
 				ChooseTicketClassFrame cf = new ChooseTicketClassFrame();
 				cf.setSize(320, 260);
-				cf.setLocation(300, 400);
+				cf.setLocation(CommenMethod.FRAME_LOCATION_X+10, CommenMethod.FRAME_LOCATION_Y+10);
 				cf.setVisible(true);
+				frame.setVisible(false);
 			}
 		});
 		// btnBooking.addActionListener(e -> new BookTickesFrame()); TODO Change to new

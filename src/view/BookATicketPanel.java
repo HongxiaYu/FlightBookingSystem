@@ -51,14 +51,13 @@ public class BookATicketPanel extends JPanel {
 	
 	public void initVale(Ticket t) {
 		mealSelectPanel.initSelectedValue(t.getFoods());
-		seatSelectPanel.initSelectedSeat(t.getSeat());
+		seatSelectPanel.setSelectedSeat(t.getSeat());
 //		customerInfoPanel.init();
 	}
 	
 	public Ticket getTicket() {		
 		Customer customer = new Customer("John", "Berg", "FirstClass", 1, "pwno22323", "male");
 		Seat seat = seatSelectPanel.getSelectedSeat();
-		System.out.println(seat);
 		if(seat == null) {//
 			return null;
 		}
@@ -81,5 +80,9 @@ public class BookATicketPanel extends JPanel {
 		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 		jFrame.setSize(400, 500);
 		jFrame.setVisible(true);
+	}
+
+	public void initSeatStatus() {
+		seatSelectPanel.setSeatStatus();		
 	}
 }

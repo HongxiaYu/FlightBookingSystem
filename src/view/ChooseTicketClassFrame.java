@@ -67,7 +67,6 @@ public class ChooseTicketClassFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				FlightBookingApp.getInstanceFlightApp();
 				CommenMethod.getJFrame(btnNewButton_1).setVisible(false);
-
 			}
 		});
 		panel_1.add(btnNewButton_1);
@@ -102,8 +101,12 @@ public class ChooseTicketClassFrame extends JFrame {
 				BookTicketsPanel msf = new BookTicketsPanel(iSeatType, fl.getFlight());
 				jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 				jFrame.setSize(600, 500);
+				JFrame fatherFrame = CommenMethod.getJFrame(btnNewButton);
+				jFrame.setLocation((int) fatherFrame.getLocation().getX() + 10,
+						(int) fatherFrame.getLocation().getY() + 10);
+				fatherFrame.setVisible(false);
+
 				jFrame.setVisible(true);
-				CommenMethod.getJFrame(btnNewButton).setVisible(false);
 
 			}
 		});

@@ -9,6 +9,8 @@ import java.awt.GridBagLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import entity.Flight;
 import entity.Ticket;
@@ -32,10 +34,7 @@ public class BookTicketsPanel extends JPanel {
 	private JTabbedPane tabbedPanel = new JTabbedPane();
 	private List<BookATicketPanel> bookATicketPanels;
 	private Flight flight;
-
-	public BookTicketsPanel() {
-		initMainPanel(1,null); // need chang
-	}
+	private boolean isIniting = false;
 
 	public BookTicketsPanel(int iSeatTpe, Flight flight) {
 		initMainPanel(iSeatTpe, flight);
@@ -51,6 +50,16 @@ public class BookTicketsPanel extends JPanel {
 		tabbedPanel.addTab(ticket1, bookATicketPanel);
 		addCloseActionToTab(ticket1, bookATicketPanel);
 		bookATicketPanels.add(bookATicketPanel);
+		tabbedPanel.addChangeListener(new ChangeListener() {			
+			public void stateChanged(ChangeEvent e) {
+				int iIndex = tabbedPanel.getSelectedIndex();
+				if(iIndex != -1 && !isIniting) {
+					BookATicketPanel bookATicketPanel = bookATicketPanels.get(iIndex);
+					bookATicketPanel.initSeatStatus();
+				}
+				
+			}
+		});
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 354, 450, 33);
@@ -73,12 +82,21 @@ public class BookTicketsPanel extends JPanel {
 		JButton btnNext = new JButton("              Next              ");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				List<Ticket> tiks = getTickets();
+				if(tiks == null ) {
+					return;
+				}
 				JFrame confirmFrame = new JFrame();
-				BookingConfirmPanel msf = new BookingConfirmPanel(getTickets());
+				BookingConfirmPanel msf = new BookingConfirmPanel(tiks);
 				confirmFrame.getContentPane().add(msf, BorderLayout.CENTER);
 				confirmFrame.setSize(630, 320);
+				
+				JFrame fatherFrame = CommenMethod.getJFrame(btnNext);
+				confirmFrame.setLocation((int)fatherFrame.getLocation().getX() + 10, (int)fatherFrame.getLocation().getY() + 10);
+				fatherFrame.setVisible(false);				
+				
 				confirmFrame.setVisible(true);
-				CommenMethod.getJFrame(btnNext).setVisible(false);
+
 			}
 		});
 
@@ -96,6 +114,7 @@ public class BookTicketsPanel extends JPanel {
 				JOptionPane.showMessageDialog(CommenMethod.getJFrame(b), 
 								"You should choose a seat for " + b.getPanelName()
 								+ " first!");
+				return null;
 			}else {
 				tickets.add(b.getTicket());
 			}
@@ -105,9 +124,11 @@ public class BookTicketsPanel extends JPanel {
 
 	// init ticket to do
 	public void initTickets(List<Ticket> tickets) {
+		isIniting = true;
 		tabbedPanel.removeAll();
-		bookATicketPanels = new ArrayList<BookATicketPanel>();		
+		bookATicketPanels = new ArrayList<BookATicketPanel>();
 		for(Ticket t : tickets) {
+			Flight flight = FlightBookingApp.getDataLager().getFlyghtById(t.getSeat().getFlightId());
 			BookATicketPanel bookATicketPanelTemp = new BookATicketPanel(t.getSeatType(), flight);
 			bookATicketPanelTemp.initVale(t);
 			String title = "Ticket " + (tabbedPanel.getTabCount() + 1);
@@ -116,7 +137,7 @@ public class BookTicketsPanel extends JPanel {
 			bookATicketPanels.add(bookATicketPanelTemp);
 			bookATicketPanelTemp.setPanelName(title);
 		}
-
+		isIniting = false;
 	}
 
 	private void addCloseActionToTab(String title, BookATicketPanel bookATicketPanelTemp) {

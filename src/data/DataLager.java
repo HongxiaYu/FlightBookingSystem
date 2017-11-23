@@ -50,8 +50,6 @@ public class DataLager {
 		Optional<Flight> fli= flights.stream().filter(f -> f.equals(flightIn)).findAny();
 		if(fli.isPresent()) {
 			flight = fli.get();
-
-			System.out.println(iType);
 			switch (iType) {
 			case 1:
 				return flight.getFirstClassSeats();
@@ -66,8 +64,11 @@ public class DataLager {
 		}
 	}
 	
-	public void changeSeatStatus(SeatStatus seatStatus, int seatID) {
-		seats.stream().filter(s->s.getId()==seatID).forEach(s -> s.setSeatStatus(seatStatus));
+	
+	
+	public void changeSeatStatus(SeatStatus seatStatus, Seat seat) {
+		
+		
 	}
 	
 //	public Seat getSeatByID(int seatID) {
@@ -191,6 +192,10 @@ public class DataLager {
 
 	public static void main(String[] args) {
 
+	}
+
+	public Flight getFlyghtById(int flightId) {
+		return flights.stream().filter(f->f.getFlightId()==flightId).findFirst().get();		 
 	}
 
 }

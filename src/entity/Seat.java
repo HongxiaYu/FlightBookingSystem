@@ -7,6 +7,15 @@ public abstract class Seat {
 	private double seatPrice;
 	private SeatStatus seatStatus;
 	private int id;
+	private int flightId;	
+
+
+	public Seat(int seatNumber, int flightId) {
+		this.seatNumber=seatNumber;
+		this.flightId = flightId;
+		this.seatStatus=SeatStatus.EMPTY;	
+		this.id = GenericNumber.getSeatIDNext();
+	}
 	
 	public int getId() {
 		return id;
@@ -14,13 +23,8 @@ public abstract class Seat {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Seat(int seatNumber) {
-		this.seatNumber=seatNumber;
-		this.seatStatus=SeatStatus.EMPTY;	
-		this.id = GenericNumber.getSeatIDNext();
-	}
+	}	
+	
 
 	public int getSeatNumber() {
 		return seatNumber;
@@ -46,6 +50,14 @@ public abstract class Seat {
 		this.seatPrice = seatPrice;
 	}
 	
+	public int getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
+	}
+
 	public abstract String getSeatName();
 		
 }

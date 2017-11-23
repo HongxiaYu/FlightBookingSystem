@@ -26,11 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SeatSelectPanel extends JPanel {
-	
+
 	private int iType;
 	private Flight fight;
-	private List<SeatRadioButton>  seatRadioButtons;
-
+	private List<SeatRadioButton> seatRadioButtons;
 
 	public SeatSelectPanel(int itype, Flight fight) {
 		this.iType = itype;
@@ -70,27 +69,42 @@ public class SeatSelectPanel extends JPanel {
 			seatPanel.add(rdbtnSeat);
 			buttonGroup.add(rdbtnSeat);
 			seatRadioButtons.add(rdbtnSeat);
-		}		
-		
+		}
 	}
-	
-	public void initSelectedSeat(Seat seat) {
-		for(SeatRadioButton r : seatRadioButtons) {
-			if(r.getSeat().getId() == seat.getId()) {
+
+	public void setSeatStatus() {
+		List<Seat> seats = FlightBookingApp.getDataLager().getSeats(iType, fight);
+		for (Seat seat : seats) {
+			for (SeatRadioButton sr : seatRadioButtons) {
+				if (seat.getId() == sr.getSeat().getId()) {
+					if (!sr.isSelected()) {
+						sr.setEnabled(seat.getSeatStatus() == SeatStatus.EMPTY);
+					} else {
+						sr.setEnabled(true);
+					}
+				}
+			}
+		}
+	}
+
+	public void setSelectedSeat(Seat seat) {
+		for (SeatRadioButton r : seatRadioButtons) {
+			if (r.getSeat().getId() == seat.getId()) {
 				r.setSelected(true);
 			}
 		}
 	}
-	
+
 	public Seat getSelectedSeat() {
-		
-		seatRadioButtons.stream().forEach(s -> System.out.println(s.isSelected()));
-		SeatRadioButton stemp  =  seatRadioButtons.stream().filter(s-> s.isSelected()).findFirst().get();
-		
-		if(stemp!=null) {
-			return stemp.getSeat();
-		}		
-		return null;				
+		try {
+			SeatRadioButton stemp = seatRadioButtons.stream().filter(s -> s.isSelected()).findFirst().get();
+			if (stemp != null) {
+				return stemp.getSeat();
+			}
+		} catch (Exception e) {
+
+		}
+		return null;
 	}
 
 	public static void main(String[] args) {
@@ -103,5 +117,4 @@ public class SeatSelectPanel extends JPanel {
 		jFrame.setVisible(true);
 
 	}
-
 }

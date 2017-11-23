@@ -28,10 +28,10 @@ public  class Flight {
 	
 	private void makeSeats() {
 		for(int i = 0; i < economyClassSetas.length; i++) {
-			economyClassSetas[i] = new EconomyClassSeat(i + 1);
+			economyClassSetas[i] = new EconomyClassSeat(i + 1, flightId);
 		}
 		for(int j = 0; j < firstClassSeats.length; j++) {
-			firstClassSeats[j] = new FirstClassSeat(j + 1);
+			firstClassSeats[j] = new FirstClassSeat(j + 1, flightId);
 		}
 	}
 	
