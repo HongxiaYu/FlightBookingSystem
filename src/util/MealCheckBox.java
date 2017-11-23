@@ -42,5 +42,12 @@ public class MealCheckBox extends JPanel {
 	public void setFood(Food food) {
 		this.food = food;
 	}
+	
+	public void setCheckboxEnabled(Boolean b) {
+		if(chckbxNewCheckBox!=null) {
+			chckbxNewCheckBox.setEnabled(b);
+		}
+		
+	}
 
 }

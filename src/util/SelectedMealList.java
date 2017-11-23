@@ -7,11 +7,9 @@ import entity.Food;
 
 public class SelectedMealList {
 	private List<Food> selectedFoods = new ArrayList<Food>();
-	private int customerID = 0;
 	private int seatID = 0;
 
-	public SelectedMealList(int customerID, int seatID) {
-		this.customerID = customerID;
+	public SelectedMealList() {
 		this.seatID = seatID;
 	}
 
@@ -37,14 +35,6 @@ public class SelectedMealList {
 
 	public void setSelectedFoods(List<Food> selectedFoods) {
 		this.selectedFoods = selectedFoods;
-	}
-
-	public int getCustomerID() {
-		return customerID;
-	}
-
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
 	}
 
 	public int getSeatID() {

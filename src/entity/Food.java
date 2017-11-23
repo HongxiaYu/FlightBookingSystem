@@ -1,6 +1,6 @@
 package entity;
 
-import util.GenericIDNext;
+import util.GenericNumber;
 
 public class Food{
 
@@ -14,7 +14,7 @@ public class Food{
 		this.itemNumber=itemNumber;
 		this.foodName=foodName;
 		this.foodPrice=foodPrice;
-		id = GenericIDNext.getFoodIDNext();		
+		id = GenericNumber.getFoodIDNext();		
 	}
 	
 	public int getId() {

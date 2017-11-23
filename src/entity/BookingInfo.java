@@ -3,17 +3,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import util.GenericNumber;
+
 public class BookingInfo {
 	private int bookingID;
 	private Date date;
-	private int numberOfBookings;
-	private ArrayList<Ticket>tickets;
+	private String numberOfBookings;
+	private List<Ticket>tickets;
 	
-	public BookingInfo(int bookingID, Date date, int numberOfBookings, ArrayList<Ticket> tickets) {
+	public BookingInfo(List<Ticket> tickets) {
 		super();
-		this.bookingID = bookingID;
-		this.date = date;
-		this.numberOfBookings = numberOfBookings;
+		this.bookingID = GenericNumber.getBookingOrderIDNext();
+		this.date = new Date();
+		this.numberOfBookings = GenericNumber.getOrderNumber();
 		this.tickets = tickets;
 	}
 
@@ -25,11 +27,11 @@ public class BookingInfo {
 		return date;
 	}
 
-	public int getNumberOfBookings() {
+	public String getNumberOfBookings() {
 		return numberOfBookings;
 	}
 
-	public ArrayList<Ticket> getTickets() {
+	public List<Ticket> getTickets() {
 		return tickets;
 	}
 	

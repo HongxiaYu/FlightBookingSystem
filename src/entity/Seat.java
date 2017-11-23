@@ -1,6 +1,6 @@
 package entity;
 
-import util.GenericIDNext;
+import util.GenericNumber;
 
 public abstract class Seat {
 	private int seatNumber;
@@ -19,7 +19,7 @@ public abstract class Seat {
 	public Seat(int seatNumber) {
 		this.seatNumber=seatNumber;
 		this.seatStatus=SeatStatus.EMPTY;	
-		this.id = GenericIDNext.getSeatIDNext();
+		this.id = GenericNumber.getSeatIDNext();
 	}
 
 	public int getSeatNumber() {
@@ -45,6 +45,8 @@ public abstract class Seat {
 	public void setSeatPrice(double seatPrice) {
 		this.seatPrice = seatPrice;
 	}
+	
+	public abstract String getSeatName();
 		
 }
 	

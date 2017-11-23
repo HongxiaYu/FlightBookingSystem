@@ -1,21 +1,23 @@
 package entity;
 
+import java.util.List;
+
 public class Ticket {
 	
 	private int id;
 	private Customer customer;
 	private Seat seat;
-	private Food food;
+	private List<Food> foods;
 	
-	public Ticket(Customer customer, Seat seat, Food food) {
+	public Ticket(Customer customer, Seat seat, List<Food> foods) {
 		// ToDo add id form GeneralIDNext
 		this.customer = customer;
 		this.seat = seat;
-		this.food = food;
+		this.foods = foods;
 	}
 	
 	public Ticket(Customer customer, Seat seat) {
-		this(customer, seat, new Food(0, "No food orderd", 0.0));
+		this(customer, seat, null);
 	}
 
 	public int getTicketId() {
@@ -30,12 +32,29 @@ public class Ticket {
 		return seat;
 	}
 
-	public Food getFood() {
-		return food;
+	public List<Food> getFoods() {
+		return foods;
+	}
+	
+	public int getSeatType() {
+		if(seat instanceof FirstClassSeat) {
+			return 1;
+		}
+		return 2;
+	}
+	
+	public double getFoodsPrice() {
+		double foodsPrice = 0;
+		if(foods != null) {
+			for(Food f : foods) {
+				foodsPrice = foodsPrice+f.getFoodPrice();
+			}
+		}
+		return foodsPrice;
 	}
 	
 	public double getTicketPrice() {
-		return seat.getSeatPrice() + food.getFoodPrice();
+		return seat.getSeatPrice() + getFoodsPrice();
 	}
 	
 }

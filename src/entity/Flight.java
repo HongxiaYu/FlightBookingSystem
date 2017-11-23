@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-import util.GenericIDNext;
+import util.GenericNumber;
 
 public  class Flight {
 	
@@ -14,7 +14,7 @@ public  class Flight {
 	
 
 	public Flight(String flightName, Airplane airplane) {
-		this.flightId=GenericIDNext.getFlightIDNext();
+		this.flightId=GenericNumber.getFlightIDNext();
 		this.flightName=flightName;
 		this.airplane = airplane;
 		this.economyClassSetas = new EconomyClassSeat[airplane.getNumberOfEconomyClassSeats()];
