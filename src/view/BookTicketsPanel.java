@@ -33,6 +33,7 @@ public class BookTicketsPanel extends JPanel {
 	private List<BookATicketPanel> bookATicketPanels;
 	private Flight flight;
 
+
 	public BookTicketsPanel() {
 		initMainPanel(1,null); // need chang
 	}
@@ -47,6 +48,7 @@ public class BookTicketsPanel extends JPanel {
 		String ticket1 = "Ticket 1";
 		bookATicketPanels = new ArrayList<BookATicketPanel>();
 		BookATicketPanel bookATicketPanel = new BookATicketPanel(iSeatTpe, flight);
+
 		bookATicketPanel.setPanelName(ticket1);
 		tabbedPanel.addTab(ticket1, bookATicketPanel);
 		addCloseActionToTab(ticket1, bookATicketPanel);
@@ -163,6 +165,7 @@ public class BookTicketsPanel extends JPanel {
 	public static void main(String[] args) {
 		JFrame jFrame = new JFrame();
 		BookTicketsPanel msf = new BookTicketsPanel(1,null);
+
 		msf.getTickets();
 		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 		jFrame.setSize(600, 500);
