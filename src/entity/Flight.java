@@ -1,6 +1,8 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import util.GenericNumber;
 
@@ -11,12 +13,14 @@ public  class Flight {
 	private Airplane airplane;
 	private EconomyClassSeat[] economyClassSetas;
 	private FirstClassSeat[] firstClassSeats;
+	private String departureTime;
 	
 
-	public Flight(String flightName, Airplane airplane) {
+	public Flight(String flightName, Airplane airplane, String departureTime) {
 		this.flightId=GenericNumber.getFlightIDNext();
 		this.flightName=flightName;
 		this.airplane = airplane;
+		this.departureTime = departureTime;
 		this.economyClassSetas = new EconomyClassSeat[airplane.getNumberOfEconomyClassSeats()];
 		this.firstClassSeats = new FirstClassSeat[airplane.getNumberOfFirstCalssSeats()];
 		makeSeats();
@@ -46,13 +50,25 @@ public  class Flight {
 	}
 
 
-	public EconomyClassSeat[] getEconomyClassSeats() {
-		return economyClassSetas;
+	public List<Seat> getEconomyClassSeats() {
+		return new ArrayList<Seat>(Arrays.asList(economyClassSetas));
 	}
 
 
-	public FirstClassSeat[] getFirstClassSeats() {
-		return firstClassSeats;
+	public List<Seat> getFirstClassSeats() {
+		return new ArrayList<Seat>(Arrays.asList(firstClassSeats));
+	}
+	
+	public String getDepartureTime() {
+		return departureTime;
+	}
+	
+	public int getNumberOfFirstClassSeats() {
+		return firstClassSeats.length;
+	}
+	
+	public int getNumberOfEconomyClassSeats() {
+		return economyClassSetas.length;
 	}
 	
 	public String toString() {

@@ -15,6 +15,35 @@ public class Test {
 		// JButton btnNewButton_1 = new JButton(" OK ");
 		// btnNewButton_1.addActionListener(new ConfirmMealAction());
 		// panel_1.add(btnNewButton_1);	
+		
+		// not needed anymore?? 
+		
+		//		FirstClassSeat fcs = new FirstClassSeat(1);
+		//		FirstClassSeat fcs2 = new FirstClassSeat(1);
+		//		FirstClassSeat fcs3 = new FirstClassSeat(1);
+		//		FirstClassSeat fcs4 = new FirstClassSeat(1);
+		//		FirstClassSeat fcs5 = new FirstClassSeat(1);
+		//
+		//		EconomyClassSeat ecs6 = new EconomyClassSeat(6);
+		//		EconomyClassSeat ecs7 = new EconomyClassSeat(7);
+		//		EconomyClassSeat ecs8 = new EconomyClassSeat(8);
+		//		EconomyClassSeat ecs9 = new EconomyClassSeat(9);
+		//		EconomyClassSeat ecs10 = new EconomyClassSeat(10);
+		//
+		//		firstClassSeats.add(fcs);
+		//		firstClassSeats.add(fcs2);
+		//		firstClassSeats.add(fcs3);
+		//		firstClassSeats.add(fcs4);
+		//		firstClassSeats.add(fcs5);
+		//
+		//		economySeats.add(ecs6);
+		//		economySeats.add(ecs7);
+		//		economySeats.add(ecs8);
+		//		economySeats.add(ecs9);
+		//		economySeats.add(ecs10);
+				
+		
+		
 	}
 
 
