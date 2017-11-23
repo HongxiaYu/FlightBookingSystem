@@ -15,6 +15,8 @@ import entity.FirstClassSeat;
 
 public class DataLager {
 
+	//Test comment
+	
 	private List<Food> foods = new ArrayList<Food>();
 	private List<Flight> flights = new ArrayList<Flight>();
 	private List<Seat> firstClassSeats = new ArrayList<Seat>();
