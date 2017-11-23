@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
@@ -27,6 +28,7 @@ import java.awt.event.ActionEvent;
 public class BookingConfirmPanel extends JPanel {
 
 	private List<Ticket> tickets = new ArrayList<Ticket>();
+	
 
 	public BookingConfirmPanel(List<Ticket> tickets) {
 		this.tickets = tickets;
@@ -83,15 +85,12 @@ public class BookingConfirmPanel extends JPanel {
 	}
 
 	public void initMainPanel() {
-		JPanel allTicketsPanel = new JPanel();
-		allTicketsPanel.setLayout(null);
+		JTabbedPane tabbedPanel = new JTabbedPane();
 		if (tickets != null) {
 			int index = 1;
 			for (Ticket ticket : tickets) {
 				TicketPanel ticketPTemp = new TicketPanel(ticket);
-				ticketPTemp.setBorder(new TitledBorder("Ticket " + index));
-				ticketPTemp.setBounds(0, 255 * (index - 1), 620, 240);
-				allTicketsPanel.add(ticketPTemp);
+				tabbedPanel.addTab("Ticket " + index, ticketPTemp);
 				index++;
 			}
 		}
@@ -104,27 +103,48 @@ public class BookingConfirmPanel extends JPanel {
 		// scrollPane.setLocation(10, 20);
 		// this.add(scrollPane);
 
-		this.add(allTicketsPanel, BorderLayout.CENTER);
+		this.add(tabbedPanel, BorderLayout.CENTER);
 	}
 
 	public static void main(String[] args) {
 		JFrame jFrame = new JFrame();
 
 		Customer customer = new Customer("John", "Berg", "FirstClass", 1, "pwno22323", "male");
-		FirstClassSeat seat = new FirstClassSeat(2);
+		Customer customer2 = new Customer("John22", "Berg", "FirstClass", 1, "pwno223213", "male");
+		Customer customer3 = new Customer("John33", "Berg", "FirstClass", 1, "pwno223123", "male");
+		Customer customer4 = new Customer("John44", "Berg", "FirstClass", 1, "pwno223rte", "male");
+		Customer customer5 = new Customer("John55", "Berg", "FirstClass", 1, "pwno223453", "male");
+		
+		FirstClassSeat seat = new FirstClassSeat(1);
+		FirstClassSeat seat2 = new FirstClassSeat(2);
+		FirstClassSeat seat3 = new FirstClassSeat(3);
+		FirstClassSeat seat4 = new FirstClassSeat(4);
+		FirstClassSeat seat5 = new FirstClassSeat(5);
+		
 
 		List<Food> menu = new ArrayList<Food>();
 		menu.add(new Food(1, "Beef med rice", 56));
 		menu.add(new Food(9, "Lamb med bread", 56));
 		menu.add(new Food(12, "Red vin", 56));
 		menu.add(new Food(14, "Cocola", 56));
-		Ticket t1 = new Ticket(customer, seat, menu);
-
-		Ticket t2 = new Ticket(customer, seat, menu);
-		Ticket t3 = new Ticket(customer, seat, menu);
-		Ticket t4 = new Ticket(customer, seat, menu);
-		Ticket t5 = new Ticket(customer, seat, menu);
-		Ticket t6 = new Ticket(customer, seat, menu);
+		
+		List<Food> menu2 = new ArrayList<Food>();
+		menu2.add(new Food(1, "Chicken med rice", 56));
+		menu2.add(new Food(9, "Lamb med bread", 56));
+		menu2.add(new Food(12, "Red vin", 56));
+		menu2.add(new Food(14, "Sprite", 56));	
+		
+		List<Food> menu3 = new ArrayList<Food>();
+		menu3.add(new Food(1, "Chicken med rice", 56));
+		menu3.add(new Food(9, "Lamb med bread", 56));
+		menu3.add(new Food(12, "House vin", 56));
+		menu3.add(new Food(14, "Finda", 56));
+		
+		Ticket t1 = new Ticket(customer, seat, menu3);
+		Ticket t2 = new Ticket(customer2, seat2, menu);
+		Ticket t3 = new Ticket(customer3, seat3, menu2);
+		Ticket t4 = new Ticket(customer4, seat4, menu3);
+		Ticket t5 = new Ticket(customer5, seat5, menu);
 
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		tickets.add(t1);
@@ -132,20 +152,19 @@ public class BookingConfirmPanel extends JPanel {
 		tickets.add(t3);
 		tickets.add(t4);
 		tickets.add(t5);
-		tickets.add(t6);
 
 		BookingConfirmPanel msf = new BookingConfirmPanel(tickets);
-		// jFrame.getContentPane().add(msf, BorderLayout.CENTER);
+		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 
-		JScrollPane scrollPane = new JScrollPane(msf);
-		scrollPane.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setSize(650, 650);
-		scrollPane.setLocation(10, 20);
-		jFrame.getContentPane().add(scrollPane);
+//		JScrollPane scrollPane = new JScrollPane(msf);
+//		scrollPane.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+//		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//		scrollPane.setSize(650, 650);
+//		scrollPane.setLocation(10, 20);
+//		jFrame.getContentPane().add(scrollPane);
 
-		jFrame.setSize(650, 650);
+		jFrame.setSize(650, 350);
 		jFrame.setVisible(true);
 	}
 
