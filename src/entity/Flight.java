@@ -18,8 +18,8 @@ public  class Flight {
 		this.flightName=flightName;
 		this.airplane = airplane;
 		this.economyClassSetas = new EconomyClassSeat[airplane.getNumberOfEconomyClassSeats()];
-		
 		this.firstClassSeats = new FirstClassSeat[airplane.getNumberOfFirstCalssSeats()];
+		makeSeats();
 	}
 	
 	private void makeSeats() {
@@ -46,13 +46,17 @@ public  class Flight {
 	}
 
 
-	public EconomyClassSeat[] getEconomyClassSetas() {
+	public EconomyClassSeat[] getEconomyClassSeats() {
 		return economyClassSetas;
 	}
 
 
 	public FirstClassSeat[] getFirstClassSeats() {
 		return firstClassSeats;
+	}
+	
+	public String toString() {
+		return flightId +" "+ flightName;
 	}
 
 	

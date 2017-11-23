@@ -7,12 +7,13 @@ import util.GenericNumber;
 
 public class BookingInfo {
 	private int bookingID;
+	private Customer customer;
 	private Date date;
 	private String numberOfBookings;
 	private List<Ticket>tickets;
 	
+
 	public BookingInfo(List<Ticket> tickets) {
-		super();
 		this.bookingID = GenericNumber.getBookingOrderIDNext();
 		this.date = new Date();
 		this.numberOfBookings = GenericNumber.getOrderNumber();
@@ -21,6 +22,10 @@ public class BookingInfo {
 
 	public int getBookingID() {
 		return bookingID;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
 	}
 
 	public Date getDate() {
@@ -42,6 +47,7 @@ public class BookingInfo {
 		}
 		return price;
 	}
+	
 
 	
 }
