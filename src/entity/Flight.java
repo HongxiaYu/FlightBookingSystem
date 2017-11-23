@@ -1,6 +1,8 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import util.GenericNumber;
 
@@ -48,13 +50,13 @@ public  class Flight {
 	}
 
 
-	public EconomyClassSeat[] getEconomyClassSeats() {
-		return economyClassSetas;
+	public List<Seat> getEconomyClassSeats() {
+		return new ArrayList<Seat>(Arrays.asList(economyClassSetas));
 	}
 
 
-	public FirstClassSeat[] getFirstClassSeats() {
-		return firstClassSeats;
+	public List<Seat> getFirstClassSeats() {
+		return new ArrayList<Seat>(Arrays.asList(firstClassSeats));
 	}
 	
 	public String getDepartureTime() {
