@@ -40,28 +40,29 @@ public class SeatSelectPanel extends JPanel {
 
 		panel.add(seatPanel);
 
-		initSeatPanel(seatPanel, FlightBookingApp.getDataLager().getSeats(itype));
+		initSeatPanel(seatPanel, itype);
 
 		JPanel panel_2 = new JPanel();
 		add(panel_2, BorderLayout.SOUTH);
 	}
 
-	public void initSeatPanel(JPanel seatPanel, List<Seat> seats) {
+	public void initSeatPanel(JPanel seatPanel, int itype) {
+		seatPanel.removeAll();		
+		List<Seat> seats = FlightBookingApp.getDataLager().getSeats(itype);
 		ButtonGroup buttonGroup = new ButtonGroup();
 		seatPanel.setLayout(new BoxLayout(seatPanel, BoxLayout.Y_AXIS));
-		seatPanel.setBorder(new TitledBorder("Choose Seat"));
+		seatPanel.setBorder(new TitledBorder("Choose A Seat"));
 		for (Seat seat : seats) {
 			JRadioButton rdbtnSeat = new JRadioButton(
 					"SEAT " + seat.getSeatNumber() + "           " + seat.getSeatPrice() + "SEK");
 			rdbtnSeat.addItemListener(new ItemListener() {
 
 				public void itemStateChanged(ItemEvent event) {
-
 					int state = event.getStateChange();
 					if (state == ItemEvent.SELECTED) {
-
+						FlightBookingApp.getDataLager().changeSeatStatus(SeatStatus.ISBOOKING, seat.getId());
 					} else if (state == ItemEvent.DESELECTED) {
-
+						FlightBookingApp.getDataLager().changeSeatStatus(SeatStatus.EMPTY, seat.getId());
 					}
 				}
 			});
