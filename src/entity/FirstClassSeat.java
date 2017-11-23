@@ -24,6 +24,14 @@ public class FirstClassSeat extends Seat{
 		this.seatPrice=20000;
 		this.seatName = "First Class Seat " + seatNumber;
 	}
+
+	public double getSeatPrice() {
+		return seatPrice;
+	}
+
+	public void setSeatPrice(double seatPrice) {
+		this.seatPrice = seatPrice;
+	}
 	
 		
 }

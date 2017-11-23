@@ -31,10 +31,10 @@ public class DataLager {
 	// load data from XML
 	private void initData() {
 		FirstClassSeat fcs = new FirstClassSeat(1);
-		FirstClassSeat fcs2 = new FirstClassSeat(1);
-		FirstClassSeat fcs3 = new FirstClassSeat(1);
-		FirstClassSeat fcs4 = new FirstClassSeat(1);
-		FirstClassSeat fcs5 = new FirstClassSeat(1);
+		FirstClassSeat fcs2 = new FirstClassSeat(2);
+		FirstClassSeat fcs3 = new FirstClassSeat(3);
+		FirstClassSeat fcs4 = new FirstClassSeat(4);
+		FirstClassSeat fcs5 = new FirstClassSeat(5);
 
 		EconomyClassSeat ecs6 = new EconomyClassSeat(6);
 		EconomyClassSeat ecs7 = new EconomyClassSeat(7);
