@@ -68,17 +68,36 @@ public class FlightBookingApp {
 				cf.setVisible(true);
 			}
 		});
-		// btnBooking.addActionListener(e -> new BookTickesFrame()); TODO Change to new
-		// class
+		
 		panel.add(btnBooking);
 
 		JButton btnQuery = new JButton("Querry");
-		// btnQuery.addActionListener(e -> new QuerryFrame()); TODO Change to new class
+		btnQuery.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuerryFrame qf = new QuerryFrame(DATALAGER);
+				qf.setSize(600, 600);
+				qf.setLocation(300, 400);
+				qf.setVisible(true);
+			}
+		});
 		panel.add(btnQuery);
 
 		JButton btnAdminister = new JButton("Administer");
-		// btnAdminister.addActionListener(e -> new AdminiserFrame()); TODO Change to
-		// new class
+		btnAdminister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel logIn = new LogInPanel();
+				int i = JOptionPane.showConfirmDialog(null,
+						logIn, "Log in", JOptionPane.OK_CANCEL_OPTION);
+				
+				if(i == JOptionPane.OK_OPTION) {
+				
+					AdminiserFrame af = new AdminiserFrame(DATALAGER);
+					af.setSize(300, 180);
+					af.setLocation(300, 400);
+					af.setVisible(true);
+				}
+			}
+		}); 
 		panel.add(btnAdminister);
 
 	}
