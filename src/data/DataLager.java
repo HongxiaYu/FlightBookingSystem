@@ -98,21 +98,19 @@ public class DataLager {
 	// }
 
 	public List<Food> getFirstClassMenu() {
-		List<Food> menu = new ArrayList<Food>();
-		menu.add(new Food(1, "Beef med rice", 56));
-		menu.add(new Food(2, "Chicken med rice", 86));
-		menu.add(new Food(3, "Lamb med rice", 56));
-		menu.add(new Food(4, "Beef med potatoes", 86));
-		menu.add(new Food(5, "Chicken med potatoes", 56));
-		menu.add(new Food(6, "Lamb med potatoes", 86));
-		menu.add(new Food(7, "Beef med bread", 56));
-		menu.add(new Food(8, "Chicken med bread", 56));
-		menu.add(new Food(9, "Lamb med bread", 56));
+		List<Food> menu = new ArrayList<Food>();	
+		menu.add(new Food(1, "Toast skagen", 98));
+		menu.add(new Food(2, "Laxtartar", 86));
+		menu.add(new Food(3, "Fisk och skaldjursgryta", 156));
+		menu.add(new Food(4, "Ryggbiff med potatispure", 186));
+		menu.add(new Food(5, "Wallenbergare", 156));
+		menu.add(new Food(6, "Spaghetti alla carbonara", 186));
+		menu.add(new Food(7, "Oxsvansgryta", 156));
+		menu.add(new Food(8, "Oxfile med potatisgratäng", 156));
+		menu.add(new Food(9, "Grillad vårkyckling", 156));
 		menu.add(new Food(10, "Cocola", 56));
 		menu.add(new Food(11, "Vit Vin", 56));
 		menu.add(new Food(12, "Red vin", 56));
-		menu.add(new Food(13, "Cocola", 56));
-		menu.add(new Food(14, "Cocola", 56));
 		return menu;
 	}
 
