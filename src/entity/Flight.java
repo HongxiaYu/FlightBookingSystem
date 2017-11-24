@@ -3,6 +3,7 @@ package entity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import util.GenericNumber;
 
@@ -53,10 +54,20 @@ public  class Flight {
 	public List<Seat> getEconomyClassSeats() {
 		return new ArrayList<Seat>(Arrays.asList(economyClassSetas));
 	}
+	
+	public boolean avalableSeatsEconomyClass() {
+		Optional<Seat>seat = getEconomyClassSeats().stream().filter(s -> s.getSeatStatus()==SeatStatus.EMPTY).findAny();
+		return seat.isPresent();
+	}
 
 
 	public List<Seat> getFirstClassSeats() {
 		return new ArrayList<Seat>(Arrays.asList(firstClassSeats));
+	}
+	
+	public boolean avalableSeatsFirstClass() {
+		Optional<Seat>seat = getFirstClassSeats().stream().filter(s -> s.getSeatStatus()==SeatStatus.EMPTY).findAny();
+		return seat.isPresent();
 	}
 	
 	public String getDepartureTime() {

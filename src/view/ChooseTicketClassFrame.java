@@ -88,10 +88,20 @@ public class ChooseTicketClassFrame extends JFrame {
 
 				if (rdbtnNewRadioButton.isSelected()) {
 					iSeatType = 1;
+					if(!fl.getFlight().avalableSeatsFirstClass()) {
+						JOptionPane.showMessageDialog(CommenMethod.getJFrame(btnNewButton),
+								"First Class is fully booked! There is avalable seats in Economy Class");
+						return;
+					}
 				}
 
 				if (rdbtnEconomySeat.isSelected()) {
 					iSeatType = 2;
+					if(!fl.getFlight().avalableSeatsEconomyClass()) {
+						JOptionPane.showMessageDialog(CommenMethod.getJFrame(btnNewButton),
+								"Economy Class is fully booked! There is avalable seats in First Class");
+						return;
+					}
 				}
 
 				if (iSeatType == 0) {
@@ -121,11 +131,13 @@ public class ChooseTicketClassFrame extends JFrame {
 		flightRadioButtons = new ArrayList<FlightRadioButton>();
 		List<Flight> flights = FlightBookingApp.getDataLager().getFlights();
 		for (Flight f : flights) {
+			if(f.avalableSeatsFirstClass() || f.avalableSeatsEconomyClass()) {
 			FlightRadioButton frb = new FlightRadioButton(f);
 			frb.setAlignmentX(Component.LEFT_ALIGNMENT);
 			panel_3.add(frb);
 			flightRadioButtons.add(frb);
 			bg2.add(frb);
+			}
 		}
 	}
 
