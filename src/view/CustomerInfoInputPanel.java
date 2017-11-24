@@ -20,8 +20,11 @@ public class CustomerInfoInputPanel extends JPanel {
 
 	JTextField fntextField = new JTextField();
 	JTextField sntextField = new JTextField();
+
 	JTextField pntextField = new JTextField();
 	JComboBox  gcomboBox = new JComboBox();
+	
+	
 
 	public CustomerInfoInputPanel() {
 		setLayout(null);
