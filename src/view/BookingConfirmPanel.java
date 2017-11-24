@@ -112,11 +112,11 @@ public class BookingConfirmPanel extends JPanel {
 		JFrame jFrame = new JFrame();
 
 
-		Customer customer = new Customer("John", "Berg", "FirstClass", 1, "pwno22323", "male");
-		Customer customer2 = new Customer("John22", "Berg", "FirstClass", 1, "pwno223213", "male");
-		Customer customer3 = new Customer("John33", "Berg", "FirstClass", 1, "pwno223123", "male");
-		Customer customer4 = new Customer("John44", "Berg", "FirstClass", 1, "pwno223rte", "male");
-		Customer customer5 = new Customer("John55", "Berg", "FirstClass", 1, "pwno223453", "male");
+		Customer customer = new Customer("John", "Berg", "pwno22323", "male");
+		Customer customer2 = new Customer("John22", "Berg", "pwno223213", "male");
+		Customer customer3 = new Customer("John33", "Berg",  "pwno223123", "male");
+		Customer customer4 = new Customer("John44", "Berg",  "pwno223rte", "male");
+		Customer customer5 = new Customer("John55", "Berg",  "pwno223453", "male");
 
 		FirstClassSeat seat = new FirstClassSeat(1, 1);
 		FirstClassSeat seat2 = new FirstClassSeat(2, 1);

@@ -83,14 +83,18 @@ public class CustomerInfoInputPanel extends JPanel {
 	}
 
 	
+	public Customer getCustomer() {
 		
+		Customer customer = new Customer(fntextField.getText(),sntextField.getText(),pntextField.getText(),gcomboBox.getSelectedItem().toString());
+		return customer;
+	}
 	
 
 	public void initCustomer(Customer customer){
 
-		JLabel lblFirstname = new JLabel("FirstName"+ fntextField.getText());
-		JLabel lblNewLabel = new JLabel("Surname"+ fntextField.getText());
-		JLabel lblGender = new JLabel("Gender"+ gcomboBox.getSelectedItem());
+		JLabel lblFirstname = new JLabel(fntextField.getText());
+		JLabel lblNewLabel = new JLabel( fntextField.getText());
+		JLabel lblGender = new JLabel(gcomboBox.getSelectedItem().toString());
 		lblFirstname.setVisible(true);
 		lblNewLabel.setVisible(true);
 		lblGender.setVisible(true);

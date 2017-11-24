@@ -63,7 +63,7 @@ public class TicketPanel extends JPanel {
 		JFrame jFrame = new JFrame();
 		// String firstName,String lastName,String classType,int customerId, String
 		// passportNo, String gender
-		Customer customer = new Customer("John", "Berg", "FirstClass", 1, "pwno22323", "male");
+		Customer customer = new Customer("John", "Berg",  "pwno22323", "male");
 		FirstClassSeat seat = new FirstClassSeat(2,1);
 
 		List<Food> menu = new ArrayList<Food>();
