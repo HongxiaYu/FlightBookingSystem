@@ -27,6 +27,7 @@ import javax.swing.BoxLayout;
 public class ChooseTicketClassFrame extends JFrame {
 
 	List<FlightRadioButton> flightRadioButtons;
+	ButtonGroup bg2 = new ButtonGroup();
 
 	public ChooseTicketClassFrame() {
 
@@ -79,7 +80,7 @@ public class ChooseTicketClassFrame extends JFrame {
 				FlightRadioButton fl = flightRadioButtons.stream().filter(f -> f.isSelected()).findFirst().get();
 				if (fl == null) {
 					JOptionPane.showMessageDialog(CommenMethod.getJFrame(btnNewButton),
-							"You need choose a flyght type! ");
+							"You need choose a flyght! ");
 					return;
 				}
 
@@ -115,7 +116,7 @@ public class ChooseTicketClassFrame extends JFrame {
 		panel_1.add(btnNewButton);
 
 	}
-
+	
 	private void initFlight(JPanel panel_3) {
 		flightRadioButtons = new ArrayList<FlightRadioButton>();
 		List<Flight> flights = FlightBookingApp.getDataLager().getFlights();
@@ -124,6 +125,7 @@ public class ChooseTicketClassFrame extends JFrame {
 			frb.setAlignmentX(Component.LEFT_ALIGNMENT);
 			panel_3.add(frb);
 			flightRadioButtons.add(frb);
+			bg2.add(frb);
 		}
 	}
 
