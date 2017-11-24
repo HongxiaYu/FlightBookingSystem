@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -30,13 +31,14 @@ public class QuerryFrame extends JFrame {
 	private JTextField textField_1;
 	private JTextArea textArea;
 	private DataLager data;
+	private JPanel base = new JPanel();
 
 
 	public QuerryFrame(DataLager data) {
 
 		this.data = data;
 
-		JPanel base = new JPanel();
+		
 		add(base);
 		
 		base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
@@ -59,6 +61,11 @@ public class QuerryFrame extends JFrame {
 		base.add(textArea);
 
 	}
+	
+	private void noBookingFound() {
+		JOptionPane.showMessageDialog(this, "No Booking found, check youre Booking number",
+				"information", JOptionPane.INFORMATION_MESSAGE);
+	}
 
 	class BookingNumberSearchListener implements ActionListener{
 
@@ -67,15 +74,27 @@ public class QuerryFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			NumberFormat formatter = new DecimalFormat("#0.00"); 
 			textArea.setText("");
-			StringBuilder output = new StringBuilder();
+			
 
 			String number= textField.getText();
 
 			BookingInfo booking = data.getBookingByNumber(number); 
 
 			if(booking != null) {
-
+				
+				StringBuilder output = new StringBuilder(); 
+				
 				List<Ticket>tickets = booking.getTickets();
+				
+				int filghtId = tickets.get(0).getSeat().getFlightId();
+				List<Flight>flights = data.getFlights().stream().filter(f -> f.getFlightId() == filghtId).collect(Collectors.toList());
+				
+				output.append("\n");
+				output.append(" ");
+				output.append(flights.get(0).getFlightName());
+				output.append(" ");
+				output.append(flights.get(0).getDepartureTime());
+				output.append("\n");
 
 				for(Ticket t: tickets) {
 
@@ -106,11 +125,18 @@ public class QuerryFrame extends JFrame {
 
 				output.append("\n Total price of booking: ");
 				output.append(formatter.format(booking.getBookingPrice()));
+				
+				textArea.append(output.toString());
 			}
-
-			textArea.append(output.toString());
+			else {
+				
+				noBookingFound();
+			
 		}
 
+		
+			
+		}
 
 	}
 
