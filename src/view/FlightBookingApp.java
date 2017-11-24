@@ -67,7 +67,7 @@ public class FlightBookingApp {
 				cf.setSize(320, 260);
 				cf.setLocation(CommenMethod.FRAME_LOCATION_X+10, CommenMethod.FRAME_LOCATION_Y+10);
 				cf.setVisible(true);
-				frame.setVisible(false);
+//				frame.setVisible(false);
 			}
 		});
 		// btnBooking.addActionListener(e -> new BookTickesFrame()); TODO Change to new
