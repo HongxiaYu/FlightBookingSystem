@@ -53,20 +53,6 @@ public class QuerryFrame extends JFrame {
 		btnSearch.addActionListener(new BookingNumberSearchListener());
 		panelNorth.add(btnSearch);
 
-//		JPanel panelMiddle = new JPanel();
-//		add(panelMiddle);
-//
-//		JLabel lblFlightName = new JLabel("Flight id");
-//		panelMiddle.add(lblFlightName);
-//
-//		textField_1 = new JTextField();
-//		panelMiddle.add(textField_1);
-//		textField_1.setColumns(10);
-//
-//		JButton btnSearch_1 = new JButton("Search");
-//		btnSearch_1.addActionListener(new FlightSerachButtonListener());
-//		panelMiddle.add(btnSearch_1);
-
 		textArea = new JTextArea();
 		base.add(textArea);
 
@@ -121,35 +107,6 @@ public class QuerryFrame extends JFrame {
 
 	}
 
-//	class FlightSerachButtonListener implements ActionListener{
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//
-//			textArea.setText("");
-//			StringBuilder output = new StringBuilder();
-//
-//			int id = Integer.parseInt(textField_1.getText());
-//
-//
-//			Optional<Flight> fl = data.getFlights().stream()
-//					.filter(f -> f.getFlightId() == id)
-//					.findAny();
-//
-//			if(fl.isPresent()) {
-//
-//				Flight flight = fl.get();
-//				output.append("FirstClass seats\n");
-//
-//				
-//
-//			}
-//
-//			textArea.setText(output.toString());
-//		}
-//
-//	
-//	}
 
 }
 

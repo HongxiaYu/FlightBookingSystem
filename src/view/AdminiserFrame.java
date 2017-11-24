@@ -31,8 +31,6 @@ public class AdminiserFrame extends JFrame {
 		JPanel panelBottom = new JPanel();
 		base.add(panelBottom);
 		
-		
-		
 	}
 	
 	private double getTotalProfit() {
