@@ -5,14 +5,14 @@ public class EconomyClassSeat extends Seat{
 	private double seatPrice;
 	private String seatName;
 	
-	public EconomyClassSeat(int seatNumber, double seatPrice) {
-		super(seatNumber);
+	public EconomyClassSeat(int seatNumber, double seatPrice, int flightId) {
+		super(seatNumber, flightId);
 		this.seatPrice=seatPrice;
 		this.seatName = "Economy Class Seat " + seatNumber;
 	}
 
-	public EconomyClassSeat(int seatNumber) {
-		super(seatNumber);
+	public EconomyClassSeat(int seatNumber, int flightId) {
+		super(seatNumber, flightId);
 		this.seatPrice=5000;
 		this.seatName = "Economy Class Seat " + seatNumber;
 	}

@@ -7,7 +7,6 @@ import javax.swing.JTextField;
 import entity.Customer;
 
 import entity.Seat;
-import util.CommonMethod;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

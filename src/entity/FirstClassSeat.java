@@ -13,16 +13,24 @@ public class FirstClassSeat extends Seat{
 		this.seatName = seatName;
 	}
 
-	public FirstClassSeat(int seatNumber, double seatPrice) {
-		super(seatNumber);
+	public FirstClassSeat(int seatNumber, double seatPrice, int flightId) {
+		super(seatNumber, flightId);
 		this.seatPrice=seatPrice;
 		this.seatName = "First Class Seat " + seatNumber;
 	}
 
-	public FirstClassSeat(int seatNumber) {
-		super(seatNumber);
+	public FirstClassSeat(int seatNumber, int flightId) {
+		super(seatNumber, flightId);
 		this.seatPrice=20000;
 		this.seatName = "First Class Seat " + seatNumber;
+	}
+
+	public double getSeatPrice() {
+		return seatPrice;
+	}
+
+	public void setSeatPrice(double seatPrice) {
+		this.seatPrice = seatPrice;
 	}
 	
 		

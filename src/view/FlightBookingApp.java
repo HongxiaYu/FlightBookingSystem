@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import data.DataLager;
+import util.CommenMethod;
 
 import java.awt.BorderLayout;
 
@@ -32,6 +33,7 @@ public class FlightBookingApp {
 		initialize();
 		frame.setTitle("AHA Flight Booking System");
 		frame.setVisible(true);
+		flightBookingApp = this;
 	}
 
 	public static FlightBookingApp getInstanceFlightApp() {
@@ -49,7 +51,7 @@ public class FlightBookingApp {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 586, 401);
+		frame.setBounds(CommenMethod.FRAME_LOCATION_X, CommenMethod.FRAME_LOCATION_Y, 586, 401);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
@@ -62,22 +64,42 @@ public class FlightBookingApp {
 		btnBooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChooseTicketClassFrame cf = new ChooseTicketClassFrame();
-				cf.setSize(300, 180);
-				cf.setLocation(300, 400);
+				cf.setSize(320, 260);
+				cf.setLocation(CommenMethod.FRAME_LOCATION_X+10, CommenMethod.FRAME_LOCATION_Y+10);
 				cf.setVisible(true);
+//				frame.setVisible(false);
 			}
 		});
-		// btnBooking.addActionListener(e -> new BookTickesFrame()); TODO Change to new
-		// class
+		
 		panel.add(btnBooking);
 
 		JButton btnQuery = new JButton("Querry");
-		// btnQuery.addActionListener(e -> new QuerryFrame()); TODO Change to new class
+		btnQuery.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuerryFrame qf = new QuerryFrame(DATALAGER);
+				qf.setSize(600, 600);
+				qf.setLocation(300, 400);
+				qf.setVisible(true);
+			}
+		});
 		panel.add(btnQuery);
 
 		JButton btnAdminister = new JButton("Administer");
-		// btnAdminister.addActionListener(e -> new AdminiserFrame()); TODO Change to
-		// new class
+		btnAdminister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel logIn = new LogInPanel();
+				int i = JOptionPane.showConfirmDialog(null,
+						logIn, "Log in", JOptionPane.OK_CANCEL_OPTION);
+				
+				if(i == JOptionPane.OK_OPTION) {
+				
+					AdminiserFrame af = new AdminiserFrame(DATALAGER);
+					af.setSize(300, 180);
+					af.setLocation(300, 400);
+					af.setVisible(true);
+				}
+			}
+		}); 
 		panel.add(btnAdminister);
 
 	}

@@ -58,8 +58,8 @@ public class Ticket {
 	}
 	
 	public String toString() {
-		return null;
-//		return customer +" seatNumber: "+ seat.getSeatNumber() +" Meal: "+ food.getFoodName() +" Total price: " + getTicketPrice();
+//		return null;
+		return customer +" seatNumber: "+ seat.getSeatNumber() + " Total price: " + getTicketPrice();
 	}
 	
 }

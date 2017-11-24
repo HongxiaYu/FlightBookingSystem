@@ -1,17 +1,18 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import entity.Airplane;
 import entity.BookingInfo;
 import entity.Customer;
-import entity.EconomyClassSeat;
 import entity.Flight;
 import entity.Food;
 import entity.Seat;
 import entity.SeatStatus;
-import entity.FirstClassSeat;
 
 public class DataLager {
 
@@ -21,6 +22,7 @@ public class DataLager {
 	private List<Flight> flights = new ArrayList<Flight>();
 	private List<Seat> firstClassSeats = new ArrayList<Seat>();
 	private List<Seat> economySeats = new ArrayList<Seat>();
+	private List<Seat> seats = new ArrayList<Seat>();
 	private List<Customer> customers = new ArrayList<Customer>();
 	private List<BookingInfo> bookingInfos = new ArrayList<BookingInfo>();
 	
@@ -29,47 +31,45 @@ public class DataLager {
 	}
 
 	// load data from XML
-	private void initData() {
-		FirstClassSeat fcs = new FirstClassSeat(1);
-		FirstClassSeat fcs2 = new FirstClassSeat(1);
-		FirstClassSeat fcs3 = new FirstClassSeat(1);
-		FirstClassSeat fcs4 = new FirstClassSeat(1);
-		FirstClassSeat fcs5 = new FirstClassSeat(1);
+	private void initData() {		
 
-		EconomyClassSeat ecs6 = new EconomyClassSeat(6);
-		EconomyClassSeat ecs7 = new EconomyClassSeat(7);
-		EconomyClassSeat ecs8 = new EconomyClassSeat(8);
-		EconomyClassSeat ecs9 = new EconomyClassSeat(9);
-		EconomyClassSeat ecs10 = new EconomyClassSeat(10);
-
-		firstClassSeats.add(fcs);
-		firstClassSeats.add(fcs2);
-		firstClassSeats.add(fcs3);
-		firstClassSeats.add(fcs4);
-		firstClassSeats.add(fcs5);
-
-		economySeats.add(ecs6);
-		economySeats.add(ecs7);
-		economySeats.add(ecs8);
-		economySeats.add(ecs9);
-		economySeats.add(ecs10);
+	
+		Airplane a1 = new Airplane("First", 5, 5);
+		
+		Flight f1 = new Flight("To Oslo", a1, "14:00");
+		Flight f2 = new Flight("To London", a1, "16:00");
+		Flight f3 = new Flight("To Berlin", a1, "18:00");
+		
+		addFlight(f1);
+		addFlight(f2);
+		addFlight(f3);		
 
 	}
 
-	public List<Seat> getSeats(int iType) {
-		System.out.println(iType);
-		switch (iType) {
+	public List<Seat> getSeats(int iType, Flight flightIn) {
+		Flight flight = null;
+		Optional<Flight> fli= flights.stream().filter(f -> f.equals(flightIn)).findAny();
+		if(fli.isPresent()) {
+			flight = fli.get();
+			switch (iType) {
 			case 1:
-				return firstClassSeats;
+				return flight.getFirstClassSeats();
 			case 2:
-				return economySeats;
+				return flight.getEconomyClassSeats();
 			default:
+				return null;
+			}
+		}
+		else {
 			return null;
 		}
 	}
 	
-	public void changeSeatStatus(SeatStatus seatStatus, int seatID) {
-		firstClassSeats.stream().filter(s->s.getId()==seatID);
+	
+	
+	public void changeSeatStatus(SeatStatus seatStatus, Seat seat) {
+		
+		
 	}
 	
 //	public Seat getSeatByID(int seatID) {
@@ -182,9 +182,21 @@ public class DataLager {
 		return null;
 
 	}
+	
+	public void addFlight(Flight newFlight) {
+		firstClassSeats.addAll(newFlight.getFirstClassSeats());
+		seats.addAll(newFlight.getFirstClassSeats());
+		economySeats.addAll(newFlight.getEconomyClassSeats());
+		seats.addAll(newFlight.getEconomyClassSeats());
+		flights.add(newFlight);
+	}
 
 	public static void main(String[] args) {
 
+	}
+
+	public Flight getFlyghtById(int flightId) {
+		return flights.stream().filter(f->f.getFlightId()==flightId).findFirst().get();		 
 	}
 
 }

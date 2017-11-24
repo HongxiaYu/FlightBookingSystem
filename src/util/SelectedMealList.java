@@ -6,6 +6,7 @@ import java.util.List;
 import entity.Food;
 
 public class SelectedMealList {
+	
 	private List<Food> selectedFoods = new ArrayList<Food>();
 	private int seatID = 0;
 
