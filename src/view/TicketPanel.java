@@ -34,7 +34,7 @@ public class TicketPanel extends JPanel {
 		add(lblSeat);
 
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setText(ticket.getSeat().getSeatName());
+	    //lblNewLabel.set(ticket.getSeat().getSeatNumber());
 		lblNewLabel.setBounds(90, 27, 182, 14);
 		add(lblNewLabel);
 

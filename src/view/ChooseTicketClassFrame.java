@@ -5,9 +5,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
-
-import util.CommenMethod;
-
+import util.CommonMethod;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
@@ -43,7 +41,7 @@ public class ChooseTicketClassFrame extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FlightBookingApp.getInstanceFlightApp();
-				CommenMethod.getJFrame(btnNewButton_1).setVisible(false);
+				CommonMethod.getJFrame(btnNewButton_1).setVisible(false);
 
 			}
 		});
@@ -63,7 +61,7 @@ public class ChooseTicketClassFrame extends JFrame {
 				}
 
 				if (iSeatType == 0) {
-					JOptionPane.showMessageDialog(CommenMethod.getJFrame(btnNewButton),
+					JOptionPane.showMessageDialog(CommonMethod.getJFrame(btnNewButton),
 							"You need choose a seat type! ");
 				} else {
 					JFrame jFrame = new JFrame();
@@ -71,7 +69,7 @@ public class ChooseTicketClassFrame extends JFrame {
 					jFrame.getContentPane().add(msf, BorderLayout.CENTER);
 					jFrame.setSize(600, 500);
 					jFrame.setVisible(true);
-					CommenMethod.getJFrame(btnNewButton).setVisible(false);
+					CommonMethod.getJFrame(btnNewButton).setVisible(false);
 				}
 			}
 		});

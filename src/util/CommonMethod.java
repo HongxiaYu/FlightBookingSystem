@@ -4,7 +4,7 @@ import java.awt.Component;
 
 import javax.swing.JFrame;
 
-public class CommenMethod {
+public class CommonMethod {
 	public static JFrame getJFrame(Component c) {
 		while (!(c instanceof JFrame)) {
 			c = c.getParent();

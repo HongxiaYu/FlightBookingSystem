@@ -6,7 +6,7 @@ import javax.swing.border.TitledBorder;
 
 import entity.Seat;
 import entity.SeatStatus;
-import util.CommenMethod;
+import util.CommonMethod;
 
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;

@@ -46,7 +46,5 @@ public abstract class Seat {
 		this.seatPrice = seatPrice;
 	}
 	
-	public abstract String getSeatName();
-		
 }
 	

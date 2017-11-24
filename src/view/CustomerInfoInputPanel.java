@@ -6,7 +6,14 @@ import javax.swing.JTextField;
 
 import entity.Customer;
 
+import entity.Seat;
+import util.CommonMethod;
+
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
@@ -15,7 +22,7 @@ public class CustomerInfoInputPanel extends JPanel {
 	JTextField fntextField = new JTextField();
 	JTextField sntextField = new JTextField();
 	JTextField pntextField = new JTextField();
-	JComboBox gcomboBox = new JComboBox();
+	JComboBox  gcomboBox = new JComboBox();
 
 	public CustomerInfoInputPanel() {
 		setLayout(null);
@@ -45,12 +52,21 @@ public class CustomerInfoInputPanel extends JPanel {
 		pntextField.setBounds(90, 86, 225, 24);
 		add(pntextField);
 
-		JLabel lblNewLabel_1 = new JLabel("Gender");
-		lblNewLabel_1.setBounds(10, 124, 70, 14);
-		add(lblNewLabel_1);
+		JLabel lblGender = new JLabel("Gender");
+		lblGender.setBounds(10, 124, 70, 14);
+		add(lblGender);
 
 		gcomboBox.setBounds(90, 121, 225, 24);
 		add(gcomboBox);
+		gcomboBox.addItem("Choose A Gender");
+		gcomboBox.addItem("Female");
+		gcomboBox.addItem("Male");
+		gcomboBox.addItem("Other");
+
+		gcomboBox.setVisible(true);
+
+
+
 	}
 
 	public void setEditable(boolean isEditable) {
@@ -60,19 +76,37 @@ public class CustomerInfoInputPanel extends JPanel {
 		gcomboBox.setEditable(isEditable);
 	}
 
-	public void setCustomerValue(Customer custermer) {
-		fntextField.setText(custermer.getFirstName());
-		sntextField.setText(custermer.getLastName());
-		pntextField.setText(custermer.getPassportNo());
-		gcomboBox.setSelectedItem(custermer.getGender());
+	public void setCustomerValue(Customer customer) {
+		fntextField.setText(customer.getFirstName());
+		sntextField.setText(customer.getLastName());
+		pntextField.setText(customer.getPassportNo());
+		gcomboBox.setSelectedItem(customer.getGender());
 	}
 
-	public static void main(String[] args) {
-		JFrame jFrame = new JFrame();
-		CustomerInfoInputPanel msf = new CustomerInfoInputPanel();
-		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
-		jFrame.setSize(400, 300);
-		jFrame.setVisible(true);
+	
+		
+	
 
-	}
+	public void initCustomer(Customer customer){
+
+		JLabel lblFirstname = new JLabel("FirstName"+ fntextField.getText());
+		JLabel lblNewLabel = new JLabel("Surname"+ fntextField.getText());
+		JLabel lblGender = new JLabel("Gender"+ gcomboBox.getSelectedItem());
+		lblFirstname.setVisible(true);
+		lblNewLabel.setVisible(true);
+		lblGender.setVisible(true);
+
+}
+		
+		
+		
+public static void main(String[] args) {
+	JFrame jFrame = new JFrame();
+	CustomerInfoInputPanel msf = new CustomerInfoInputPanel();
+	jFrame.getContentPane().add(msf, BorderLayout.CENTER);
+	jFrame.setSize(400, 300);
+	jFrame.setVisible(true);
+	
+	
+}
 }

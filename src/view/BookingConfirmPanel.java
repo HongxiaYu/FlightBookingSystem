@@ -17,7 +17,7 @@ import entity.Customer;
 import entity.FirstClassSeat;
 import entity.Food;
 import entity.Ticket;
-import util.CommenMethod;
+import util.CommonMethod;
 
 import javax.swing.JButton;
 
@@ -54,8 +54,8 @@ public class BookingConfirmPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				BookingInfo bi = new BookingInfo(tickets);
 				FlightBookingApp.getDataLager().addABooking(bi);
-				CommenMethod.getJFrame(btnOk).setVisible(false);
-				JOptionPane.showMessageDialog(CommenMethod.getJFrame(btnOk),
+				CommonMethod.getJFrame(btnOk).setVisible(false);
+				JOptionPane.showMessageDialog(CommonMethod.getJFrame(btnOk),
 						"Congratulation! You have succeeded  book " + tickets.size()
 								+ " tickets. Your booking number is " + bi.getNumberOfBookings()
 								+ ". You can use it to query your tickets!");
@@ -68,11 +68,11 @@ public class BookingConfirmPanel extends JPanel {
 		JButton btnCanel = new JButton("Canel");
 		btnCanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int iResult = JOptionPane.showConfirmDialog(CommenMethod.getJFrame(btnOk),
+				int iResult = JOptionPane.showConfirmDialog(CommonMethod.getJFrame(btnOk),
 						"Are you sure to give up this booking?");
 				System.out.println(iResult);
 				if (iResult == 0) {
-					CommenMethod.getJFrame(btnCanel).setVisible(false);
+					CommonMethod.getJFrame(btnCanel).setVisible(false);
 					FlightBookingApp.getInstanceFlightApp();
 				}
 
@@ -110,7 +110,7 @@ public class BookingConfirmPanel extends JPanel {
 	public static void main(String[] args) {
 		JFrame jFrame = new JFrame();
 
-		Customer customer = new Customer("John", "Berg", "FirstClass", 1, "pwno22323", "male");
+		Customer customer = new Customer("John", "Berg", "FirstClass", 1, "pwno22323","Male");
 		FirstClassSeat seat = new FirstClassSeat(2);
 
 		List<Food> menu = new ArrayList<Food>();
