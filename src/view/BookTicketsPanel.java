@@ -13,6 +13,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import entity.Flight;
+import entity.Seat;
+import entity.SeatStatus;
 import entity.Ticket;
 import util.CommenMethod;
 
@@ -71,12 +73,18 @@ public class BookTicketsPanel extends JPanel {
 		panel.add(btnAddmorecustomer);
 		btnAddmorecustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BookATicketPanel bookATicketPanelTemp = new BookATicketPanel(iSeatTpe, flight);
-				String title = "Ticket " + (tabbedPanel.getTabCount() + 1);
-				tabbedPanel.addTab(title, bookATicketPanelTemp);
-				addCloseActionToTab(title, bookATicketPanelTemp);
-				bookATicketPanels.add(bookATicketPanelTemp);
-				bookATicketPanelTemp.setPanelName(title);
+				boolean moreTickets = FlightBookingApp.getDataLager().getSeats(iSeatTpe, flight)
+						.stream().filter(s -> s.getSeatStatus()==SeatStatus.EMPTY)
+						.findAny().isPresent();
+						
+				if(moreTickets && getTickets() != null) {
+					BookATicketPanel bookATicketPanelTemp = new BookATicketPanel(iSeatTpe, flight);
+					String title = "Ticket " + (tabbedPanel.getTabCount() + 1);
+					tabbedPanel.addTab(title, bookATicketPanelTemp);
+					addCloseActionToTab(title, bookATicketPanelTemp);
+					bookATicketPanels.add(bookATicketPanelTemp);
+					bookATicketPanelTemp.setPanelName(title);
+				}
 			}
 		});
 
