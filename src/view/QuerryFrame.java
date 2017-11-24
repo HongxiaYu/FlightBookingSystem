@@ -2,6 +2,8 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -63,7 +65,7 @@ public class QuerryFrame extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			NumberFormat formatter = new DecimalFormat("#0.00"); 
 			textArea.setText("");
 			StringBuilder output = new StringBuilder();
 
@@ -77,28 +79,33 @@ public class QuerryFrame extends JFrame {
 
 				for(Ticket t: tickets) {
 
+					output.append("\n");
+					output.append(" ");
 					output.append(t.getCustomer().getFirstName());
 					output.append(" ");
 					output.append(t.getCustomer().getLastName());
-					output.append(" seatNumber: ");
+					output.append("\n");
+					output.append(" Seat number: ");
 					output.append(t.getSeat().getSeatNumber());
-					output.append("\nMeal Orderd:\n");
+					
 
 					List<Food>meal = t.getFoods();
 
-					if(meal != null) {
-					meal.forEach(f -> output.append(f.getFoodName() + "\n"));
+					if(!meal.isEmpty()) {
+						output.append("\n Meal Orderd:\n");
+						meal.forEach(f -> output.append(" "+ f.getFoodName() + "\n"));
 					}
 					else {
-						output.append("No meal ordered");
+						output.append("\n No meal ordered\n");
 					}
 
-					output.append(" Price: ");
-					output.append(t.getTicketPrice());
+					output.append(" Ticket price: ");
+					output.append(formatter.format(t.getTicketPrice()));
+					output.append("\n");
 				}
 
-				output.append("\n\nTotal price of booking: ");
-				output.append(booking.getBookingPrice());
+				output.append("\n Total price of booking: ");
+				output.append(formatter.format(booking.getBookingPrice()));
 			}
 
 			textArea.append(output.toString());
