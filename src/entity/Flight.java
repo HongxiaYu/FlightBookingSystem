@@ -14,6 +14,7 @@ public  class Flight {
 	private EconomyClassSeat[] economyClassSetas;
 	private FirstClassSeat[] firstClassSeats;
 	private String departureTime;
+	private FlightStatus flightStatus;
 	
 
 	public Flight(String flightName, Airplane airplane, String departureTime) {
@@ -23,6 +24,7 @@ public  class Flight {
 		this.departureTime = departureTime;
 		this.economyClassSetas = new EconomyClassSeat[airplane.getNumberOfEconomyClassSeats()];
 		this.firstClassSeats = new FirstClassSeat[airplane.getNumberOfFirstCalssSeats()];
+		this.flightStatus = FlightStatus.BOOKING;
 		makeSeats();
 	}
 	
@@ -50,6 +52,14 @@ public  class Flight {
 	}
 
 
+	public FlightStatus getFlightStatus() {
+		return flightStatus;
+	}
+
+	public void setFlightStatus(FlightStatus flightStatus) {
+		this.flightStatus = flightStatus;
+	}
+
 	public List<Seat> getEconomyClassSeats() {
 		return new ArrayList<Seat>(Arrays.asList(economyClassSetas));
 	}
@@ -73,6 +83,21 @@ public  class Flight {
 	
 	public String toString() {
 		return flightId +" "+ flightName;
+	}
+	
+	public synchronized boolean  checkFlightIsReady() {
+		for(FirstClassSeat f  : firstClassSeats) {
+			if(f.getSeatStatus() != SeatStatus.BOOKED) {
+				return false;
+			}
+		}
+		for(EconomyClassSeat f  : economyClassSetas) {
+			if(f.getSeatStatus() != SeatStatus.BOOKED) {
+				return false;
+			}
+		}
+		flightStatus = FlightStatus.READY;
+		return true;
 	}
 
 	

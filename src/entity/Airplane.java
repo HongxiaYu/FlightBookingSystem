@@ -16,6 +16,26 @@ public class Airplane {
 		this.numberOfEconomyClassSeats = numberOfEconomyClassSeats;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setNumberOfFirstCalssSeats(int numberOfFirstCalssSeats) {
+		this.numberOfFirstCalssSeats = numberOfFirstCalssSeats;
+	}
+
+	public void setNumberOfEconomyClassSeats(int numberOfEconomyClassSeats) {
+		this.numberOfEconomyClassSeats = numberOfEconomyClassSeats;
+	}
+
 	public int getId() {
 		return id;
 	}

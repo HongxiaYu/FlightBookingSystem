@@ -33,4 +33,5 @@ public class GenericNumber {
 	public static String getOrderNumber() {
 		return "AHA" + (new Date()).getTime();
 	}	
+	
 }

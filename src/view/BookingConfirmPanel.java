@@ -14,6 +14,7 @@ import entity.Customer;
 import entity.FirstClassSeat;
 import entity.Flight;
 import entity.Food;
+import entity.SeatStatus;
 import entity.Ticket;
 import util.CommenMethod;
 
@@ -39,8 +40,7 @@ public class BookingConfirmPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JFrame jFrame = new JFrame();
 				Flight flight = FlightBookingApp.getDataLager().getFlyghtById(tickets.get(0).getSeat().getFlightId());
-				BookTicketsPanel msf = new BookTicketsPanel(tickets.get(0).getSeatType(), flight);// to
-				
+				BookTicketsPanel msf = new BookTicketsPanel(tickets.get(0).getSeatType(), flight);// to				
 				msf.initTickets(tickets);																					// change
 				jFrame.getContentPane().add(msf, BorderLayout.CENTER);				
 				JFrame fatherFrame = CommenMethod.getJFrame(btnModify);
@@ -56,6 +56,9 @@ public class BookingConfirmPanel extends JPanel {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setBookedStatus(tickets);
+				Flight flight = FlightBookingApp.getDataLager().getFlyghtById(tickets.get(0).getSeat().getFlightId());
+				flight.checkFlightIsReady();
 				BookingInfo bi = new BookingInfo(tickets);
 				FlightBookingApp.getDataLager().addABooking(bi);
 				CommenMethod.getJFrame(btnOk).setVisible(false);
@@ -63,8 +66,7 @@ public class BookingConfirmPanel extends JPanel {
 						"Congratulation! You have succeeded  book " + tickets.size()
 								+ " tickets. Your booking number is " + bi.getNumberOfBookings()
 								+ ". You can use it to query your tickets!");
-				FlightBookingApp.getInstanceFlightApp();
-
+				FlightBookingApp.getInstanceFlightApp();				
 			}
 		});
 		btPanel.add(btnOk);
@@ -106,6 +108,12 @@ public class BookingConfirmPanel extends JPanel {
 		// this.add(scrollPane);
 
 		this.add(tabbedPanel, BorderLayout.CENTER);
+	}
+	
+	public void setBookedStatus(List<Ticket> ts) {
+		for (Ticket t : ts) {
+			t.getSeat().setSeatStatus(SeatStatus.BOOKED);
+		}
 	}
 
 	public static void main(String[] args) {

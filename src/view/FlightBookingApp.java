@@ -8,6 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import data.DataLager;
+import entity.Airplane;
+import entity.AirplaneRunnable;
+import entity.Flight;
 import util.CommenMethod;
 
 import java.awt.BorderLayout;
@@ -18,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class FlightBookingApp {
@@ -65,12 +69,12 @@ public class FlightBookingApp {
 			public void actionPerformed(ActionEvent e) {
 				ChooseTicketClassFrame cf = new ChooseTicketClassFrame();
 				cf.setSize(320, 260);
-				cf.setLocation(CommenMethod.FRAME_LOCATION_X+10, CommenMethod.FRAME_LOCATION_Y+10);
+				cf.setLocation(CommenMethod.FRAME_LOCATION_X + 10, CommenMethod.FRAME_LOCATION_Y + 10);
 				cf.setVisible(true);
-//				frame.setVisible(false);
+				// frame.setVisible(false);
 			}
 		});
-		
+
 		panel.add(btnBooking);
 
 		JButton btnQuery = new JButton("Querry");
@@ -88,19 +92,25 @@ public class FlightBookingApp {
 		btnAdminister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel logIn = new LogInPanel();
-				int i = JOptionPane.showConfirmDialog(null,
-						logIn, "Log in", JOptionPane.OK_CANCEL_OPTION);
-				
-				if(i == JOptionPane.OK_OPTION) {
-				
+				int i = JOptionPane.showConfirmDialog(null, logIn, "Log in", JOptionPane.OK_CANCEL_OPTION);
+
+				if (i == JOptionPane.OK_OPTION) {
+
 					AdminiserFrame af = new AdminiserFrame(DATALAGER);
 					af.setSize(300, 180);
 					af.setLocation(300, 400);
 					af.setVisible(true);
 				}
 			}
-		}); 
+		});
 		panel.add(btnAdminister);
+
+		List<Airplane> as = DATALAGER.getAirplanes();
+		for (Airplane a : as) {
+			Flight f = DATALAGER.getFlyghtByAirplane(a.getId());
+			Thread airplane1 = new Thread(new AirplaneRunnable(a, f.getFlightName()));
+			airplane1.start();
+		}
 
 	}
 
