@@ -129,7 +129,7 @@ public class ChooseTicketClassFrame extends JFrame {
 	
 	private void initFlight(JPanel panel_3) {
 		flightRadioButtons = new ArrayList<FlightRadioButton>();
-		List<Flight> flights = FlightBookingApp.getDataLager().getFlights();
+		List<Flight> flights = FlightBookingApp.getDataLager().getBookingFlights();
 		for (Flight f : flights) {
 			if(f.avalableSeatsFirstClass() || f.avalableSeatsEconomyClass()) {
 			FlightRadioButton frb = new FlightRadioButton(f);
