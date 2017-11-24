@@ -20,8 +20,11 @@ public class CustomerInfoInputPanel extends JPanel {
 
 	JTextField fntextField = new JTextField();
 	JTextField sntextField = new JTextField();
+
 	JTextField pntextField = new JTextField();
 	JComboBox  gcomboBox = new JComboBox();
+	
+	
 
 	public CustomerInfoInputPanel() {
 		setLayout(null);
@@ -82,30 +85,34 @@ public class CustomerInfoInputPanel extends JPanel {
 		gcomboBox.setSelectedItem(customer.getGender());
 	}
 
-	
-		
-	
+
+	public Customer getCustomer() {
+
+		Customer customer = new Customer(fntextField.getText(),sntextField.getText(),pntextField.getText(),gcomboBox.getSelectedItem().toString());
+		return customer;
+	}
+
 
 	public void initCustomer(Customer customer){
 
-		JLabel lblFirstname = new JLabel("FirstName"+ fntextField.getText());
-		JLabel lblNewLabel = new JLabel("Surname"+ fntextField.getText());
-		JLabel lblGender = new JLabel("Gender"+ gcomboBox.getSelectedItem());
+		JLabel lblFirstname = new JLabel(fntextField.getText());
+		JLabel lblNewLabel = new JLabel( fntextField.getText());
+		JLabel lblGender = new JLabel(gcomboBox.getSelectedItem().toString());
 		lblFirstname.setVisible(true);
 		lblNewLabel.setVisible(true);
 		lblGender.setVisible(true);
 
-}
-		
-		
-		
-public static void main(String[] args) {
-	JFrame jFrame = new JFrame();
-	CustomerInfoInputPanel msf = new CustomerInfoInputPanel();
-	jFrame.getContentPane().add(msf, BorderLayout.CENTER);
-	jFrame.setSize(400, 300);
-	jFrame.setVisible(true);
-	
-	
-}
+	}
+
+
+
+	public static void main(String[] args) {
+		JFrame jFrame = new JFrame();
+		CustomerInfoInputPanel msf = new CustomerInfoInputPanel();
+		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
+		jFrame.setSize(400, 300);
+		jFrame.setVisible(true);
+
+
+	}
 }

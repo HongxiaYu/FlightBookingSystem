@@ -9,6 +9,7 @@ public class GenericNumber {
 	private static int SeatIDNext = 0;
 	private static int CustomerIDNext = 0;
 	private static int AirplaneIDNext = 0;
+	private static int OrderNumberNext = 0;
 	
 
 	public static int getFlightIDNext() {
@@ -31,7 +32,7 @@ public class GenericNumber {
 	}	
 	
 	public static String getOrderNumber() {
-		return "AHA" + (new Date()).getTime();
+		return "AHA" + (++OrderNumberNext);
 	}	
 	
 }

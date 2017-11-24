@@ -32,5 +32,8 @@ public class LogInPanel extends JPanel{
 		add(second);
 		
 		setVisible(true);
+		
+		
+		
 	}
 }

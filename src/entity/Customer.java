@@ -1,27 +1,25 @@
 
 package entity;
 
+import util.GenericNumber;
+
 public class Customer{
 	
 	private String firstName;
 	private String lastName;
-	private String classType;
 	private int customerId;
-	int  numberOfBookings;
 	private String passportNo;
 	private String gender;
 	
 
 
-	public Customer(String firstName,String lastName, String classType, int customerId,String passportNo, String gender) {
+	public Customer(String firstName,String lastName, String passportNo, String gender) {
 		this.firstName=firstName;
 		this.lastName= lastName;
-		this.classType=classType;
-		this.customerId=customerId;
 		
+		this.customerId=GenericNumber.getCustomerIDNext();		
 		this.passportNo = passportNo;
 		this.gender=gender;
-		numberOfBookings++;		
 	}	
 
 
@@ -44,9 +42,7 @@ public class Customer{
 
 	
 
-	public void setClassType(String classType) {
-		this.classType = classType;
-	}
+
 
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
@@ -60,17 +56,13 @@ public class Customer{
 		return lastName;
 	}
 
-	public String getClassType() {
-		return classType;
-	}
+
+
 
 	public int getCustomerId() {
 		return customerId;
 	}
 
-	public int getNumberOfBookings() {
-		return numberOfBookings;
-	}
 
 	public String getGender() {
 		return gender;

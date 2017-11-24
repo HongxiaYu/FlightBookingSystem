@@ -52,11 +52,12 @@ public class BookATicketPanel extends JPanel {
 	public void initVale(Ticket t) {
 		mealSelectPanel.initSelectedValue(t.getFoods());
 		seatSelectPanel.setSelectedSeat(t.getSeat());
-//		customerInfoPanel.init();
+		customerInfoPanel.initCustomer(t.getCustomer());
 	}
 	
 	public Ticket getTicket() {		
-		Customer customer = new Customer("John", "Berg", "FirstClass", 1, "pwno22323", "male");
+		//Customer customer = new Customer(fntextField.getText(),sntextField.getText(),pntextField.getText(),gcomboBox.getActionCommand());
+		Customer customer = customerInfoPanel.getCustomer();
 		Seat seat = seatSelectPanel.getSelectedSeat();
 		if(seat == null) {//
 			return null;
