@@ -60,7 +60,9 @@ public class SeatSelectPanel extends JPanel {
 		seatPanel.removeAll();
 		ButtonGroup buttonGroup = new ButtonGroup();
 		seatRadioButtons = new ArrayList<SeatRadioButton>();
+
 		List<Seat> seats = FlightBookingApp.getDataLager().getSeats(iType, fight);
+
 		seatPanel.setLayout(new BoxLayout(seatPanel, BoxLayout.Y_AXIS));
 		seatPanel.setBorder(new TitledBorder("Choose A Seat"));
 		for (Seat seat : seats) {

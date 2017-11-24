@@ -8,7 +8,7 @@ import javax.swing.JRadioButton;
 import view.FlightBookingApp;
 
 public class SeatRadioButton extends JRadioButton {
-	
+
 	Seat seat;
 	SeatRadioButton seatRadioButton;
 	public SeatRadioButton(Seat seat) {
