@@ -52,7 +52,7 @@ public class BookATicketPanel extends JPanel {
 	public void initVale(Ticket t) {
 		mealSelectPanel.initSelectedValue(t.getFoods());
 		seatSelectPanel.setSelectedSeat(t.getSeat());
-		customerInfoPanel.initCustomer(t.getCustomer());
+		customerInfoPanel.setCustomerValue(t.getCustomer());
 	}
 	
 	public Ticket getTicket() {		
