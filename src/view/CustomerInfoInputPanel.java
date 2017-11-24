@@ -82,13 +82,13 @@ public class CustomerInfoInputPanel extends JPanel {
 		gcomboBox.setSelectedItem(customer.getGender());
 	}
 
-	
+
 	public Customer getCustomer() {
-		
+
 		Customer customer = new Customer(fntextField.getText(),sntextField.getText(),pntextField.getText(),gcomboBox.getSelectedItem().toString());
 		return customer;
 	}
-	
+
 
 	public void initCustomer(Customer customer){
 
@@ -99,17 +99,17 @@ public class CustomerInfoInputPanel extends JPanel {
 		lblNewLabel.setVisible(true);
 		lblGender.setVisible(true);
 
-}
-		
-		
-		
-public static void main(String[] args) {
-	JFrame jFrame = new JFrame();
-	CustomerInfoInputPanel msf = new CustomerInfoInputPanel();
-	jFrame.getContentPane().add(msf, BorderLayout.CENTER);
-	jFrame.setSize(400, 300);
-	jFrame.setVisible(true);
-	
-	
-}
+	}
+
+
+
+	public static void main(String[] args) {
+		JFrame jFrame = new JFrame();
+		CustomerInfoInputPanel msf = new CustomerInfoInputPanel();
+		jFrame.getContentPane().add(msf, BorderLayout.CENTER);
+		jFrame.setSize(400, 300);
+		jFrame.setVisible(true);
+
+
+	}
 }
