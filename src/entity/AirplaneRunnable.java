@@ -33,7 +33,7 @@ public class AirplaneRunnable implements Runnable {
 					continue;
 				}
 				f.setFlightStatus(FlightStatus.FLYING);
-				System.out.println("AirPlane " + airplane.getName() + "  " + destination + "is for Take-off ....");
+				System.out.println("AirPlane " + airplane.getName() + "  " + destination + " is for Take-off ....");
 				Thread.sleep(3000);
 				System.out.println("AirPlane " + airplane.getName() + "  " + destination + " is on the way ....");
 				Thread.sleep(60000);
