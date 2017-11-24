@@ -77,7 +77,14 @@ public class ChooseTicketClassFrame extends JFrame {
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FlightRadioButton fl = flightRadioButtons.stream().filter(f -> f.isSelected()).findFirst().get();
+				
+				FlightRadioButton fl = null;
+				try {
+					fl = flightRadioButtons.stream().filter(f -> f.isSelected()).findFirst().get();
+				}catch(Exception ee) {
+					System.out.println("You need choose a flyght! ");
+				}
+				
 				if (fl == null) {
 					JOptionPane.showMessageDialog(CommenMethod.getJFrame(btnNewButton),
 							"You need choose a flyght! ");

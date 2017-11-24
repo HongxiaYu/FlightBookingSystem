@@ -217,7 +217,13 @@ public class DataLager {
 	}
 
 	public Flight getFlyghtByAirplane(int airplaneId) {
-		return flights.stream().filter(f -> f.getAirplane().getId() == airplaneId).findFirst().get();
+		for(Flight f: flights) {
+			if(f.getAirplane().getId() == airplaneId && f.getFlightStatus() != FlightStatus.FINISHED) {
+				return f;
+			}
+		}
+		return null;
+		
 	}
 
 }

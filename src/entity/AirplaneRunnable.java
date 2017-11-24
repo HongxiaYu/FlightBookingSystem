@@ -22,21 +22,26 @@ public class AirplaneRunnable implements Runnable {
 		while (true) {
 			try {
 				Flight f = FlightBookingApp.getDataLager().getFlyghtByAirplane(airplane.getId());
+				
+				if(f == null) {
+					Thread.sleep(10000);
+				}
+			
 				f.checkFlightIsReady();
 				if (f.getFlightStatus() != FlightStatus.READY) {
 					Thread.sleep(3000);
 					continue;
 				}
 				f.setFlightStatus(FlightStatus.FLYING);
-				System.out.println(airplane.getName() + "  " + destination + "is for Take-off ....");
+				System.out.println("AirPlane " + airplane.getName() + "  " + destination + "is for Take-off ....");
 				Thread.sleep(3000);
-				System.out.println(airplane.getName() + "  " + destination + " is on the way ....");
+				System.out.println("AirPlane " + airplane.getName() + "  " + destination + " is on the way ....");
 				Thread.sleep(60000);
-				System.out.println(airplane.getName() + "  " + destination + " is landing ....");
+				System.out.println("AirPlane " + airplane.getName() + "  " + destination + " is landing ....");
 				Thread.sleep(3000);
-				System.out.println(airplane.getName() + "  " + destination + " is refueling ....");
+				System.out.println("AirPlane " + airplane.getName() + "  " + destination + " is refueling ....");
 				Thread.sleep(3000);
-				System.out.println(airplane.getName() + " create a new flight " + " to " + destination + "....");
+				System.out.println("AirPlane " + airplane.getName() + " is ready for a new flight " + " to " + destination + "....");
 
 				f.setFlightStatus(FlightStatus.FINISHED);
 				Flight f_new = new Flight(f.getFlightName(), airplane, f.getDepartureTime());
